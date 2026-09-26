@@ -6,8 +6,8 @@ This describes the site as built. Keep it in step with the code.
 
 A two-part classroom simulation. Groups of three share one laptop and play the nurse manager of a
 denial-appeals team at RCMco (fictional). An agent drafts appeal letters; nurses review, correct and improve
-the drafts. The manager cannot change pay, targets or the agent. They decide who to rely on, who to coach,
-who to step in with, and what job to give their best people. Each exercise takes about 10 minutes.
+the drafts. The manager cannot change pay, targets or the agent. They decide how to handle each nurse and which
+nurses to rely on, then give their two champions their roles. Each exercise takes about 10 minutes.
 
 ## Constraints
 
@@ -39,41 +39,46 @@ targets in the model, lookups, and a tick/cross mark with a screen-reader label.
 ## Data (`data/model.js`)
 
 - Targets: 7 letters a day (up from 4) at a 95% quality bar.
-- Four nurses, each with letters a day, quality %, % of drafts edited, feedback notes a week, the right call,
-  and a stated plot position for the reveal grid (x = output, y = oversight, 0 to 1).
+- Five nurses, each with letters a day, quality score %, % of letters started from the agent's draft (`used`),
+  % of used drafts they edit, feedback notes a week, the right call, a quadrant on the reveal grid (`zone`),
+  and a stated plot position (x = output, y = oversight, 0 to 1).
 
-| Nurse | Letters | Quality | Edited | Notes | Right call |
-|---|---|---|---|---|---|
-| A | 11 | 97% | 2% | 0 | Flag |
-| B | 9 | 97% | 35% | 12 | Champion |
-| C | 7 | 96% | 40% | 6 | Champion |
-| D | 4 | 97% | 78% | 2 | Coach |
+| Nurse | Letters | Quality | Uses draft | Edited | Notes | Right call | Quadrant |
+|---|---|---|---|---|---|---|---|
+| A | 11 | 97% | 100% | 2% | 0 | Flag | Bottom right |
+| B | 9 | 97% | 100% | 35% | 12 | Champion | Top right |
+| C | 7 | 96% | 100% | 40% | 6 | Champion | Top right |
+| D | 5 | 97% | 100% | 78% | 2 | Coach | Top left |
+| E | 4 | 96% | 8% | 0% | 0 | Flag | Bottom left |
 
-- Bar scales (never shown as numbers), the three labels with quotas (2 Champions, 1 Coach, 1 Flag), the two
-  champion roles, and the right role for B (improves the agent) and C (improves the people).
+- Nurse E sits at 4 letters a day, the pre-agent target, because they still write every letter by hand.
+- Bar scales (never shown as numbers), the four quadrant ids in reading order, the three labels with quotas
+  (2 Champions, 1 Coach, 2 Flags), the two champion roles (Agent improvement champion, Agent adoption
+  champion), and the right role for B (improves the agent) and C (improves its users).
 - `window.RCM_LOGIC`: pure functions `quotaMet`, `counts`, `score1`, `valid2`, `score2`, `fill`.
 
 No other numbers appear in the exercise: no money, revenue or pay.
 
 ## Exercise 1: Your dashboard
 
-- Task line, then a table (about 60% width) of the four nurses: letters a day (bar with a target tick),
-  quality (bar with a bar tick), drafts they edit, feedback notes a week. Bars are one neutral color. Nothing
+- Task line, then a table (about 60% width) of the five nurses: letters a day (bar with a target tick),
+  quality score (bar with a bar tick), uses the agent's draft, drafts they edit, feedback notes per week. Bars are one neutral color. Nothing
   is colored good or bad before the reveal. Each name carries one plain floor note.
 - Each row has three pill buttons (Champion, Coach, Flag), `aria-pressed`, one call per nurse.
 - Right panel: plain-word definitions of the three calls, a live counter, the quota rule, and LOCK IN, which
-  enables only at exactly 2/1/1.
+  enables only at exactly 2 Champions, 1 Coach and 2 Flags.
 - Reveal (no undo): each row shows the right call as a colored tag with its word, a tick or cross against the
   group's call, and the right-call line or the specific consequence line. Rows enter 150ms apart. The right
-  panel becomes the Framework 1 grid (Coach top-left, Champion top-right, Flag across the bottom row, Low and
-  High on both axes) with the four nurses as lettered dots, the navy "What is different with agents?" box, a
+  panel becomes the Framework 1 grid: four equal quadrants (Coach top left, Champion top right, and two Flag
+  quadrants along the bottom, one for not using the agent and one for not checking its work), Low and High on
+  both axes, and the five nurses as lettered dots, the navy "What is different with agents?" box, a
   computed score line, NEXT: YOUR CHAMPIONS, and a quiet Start over.
 
 ## Exercise 2: Your champions
 
 - Two nurse cards (B and C), each with the exercise 1 figures in small type, four evidence bullets, and two
-  buttons: Improves the agent, Improves the people. Picking a job for one nurse gives the other nurse the
-  other job, so there is one decision and no invalid state. LOCK IN enables once a choice is made.
+  buttons: Improves the agent, Improves its users. Choosing a role for one nurse assigns the other role to
+  the other nurse, so there is one decision and no invalid state. LOCK IN enables once a choice is made.
 - Right panel before the reveal: the two role cards (plain name large, formal name small).
 - Reveal: a tick or cross and one line on each card; the right panel becomes the Framework 2 table (the job,
   pick someone who, on the dashboard), the closing line on treating champions, a computed score line, the end
@@ -84,7 +89,13 @@ No other numbers appear in the exercise: no money, revenue or pay.
 - Plain words before any reveal. "Oversight", "complacency", "rubber-stamp" and "utilization" appear only in
   reveal and framework copy.
 - The narrator never states the lesson before the reveal.
-- American English, no em dashes, no "not X but Y" constructions, one idea per sentence, they/them.
+- No contrast framing ("X, not Y", "rather than", "instead of", "not just" and similar). State the positive fact.
+- No slogans, no fragments, no dramatic storytelling, and no superlatives unless they are data.
+- Write like a clinical operations manager's notes: short declarative sentences that name the nurse, say what
+  the data shows, then say what to do.
+- Framework wording on the reveals matches the framework slides exactly, including two zone definitions that
+  keep their original "but" wording.
+- American English, no em dashes, they/them.
 - Research is described in plain words, without author names, titles, venues or years.
 - The facilitator guide holds the intro, timing, a stall prompt, debrief questions and the research. It holds
   no answer key, because anyone can reach it.
@@ -104,11 +115,14 @@ No other numbers appear in the exercise: no money, revenue or pay.
 
 1. **Logic.** Open `test.html` (linked from nowhere), or run it under node:
    `node -e 'global.window=global;require("./data/model.js");require("./data/script.js");require("./assets/test.js");console.log(window.RCM_TEST_RESULTS.passed+"/"+window.RCM_TEST_RESULTS.total)'`.
-   It enumerates every call assignment (exactly 12 valid, exactly one scores 4 of 4), checks every right-call
-   and consequence line exists, and scores both exercise 2 assignments.
-2. **Content.** No gendered pronouns in `data/`, `assets/` or `*.html`; no digits in the page `.html` files;
+   It enumerates every call assignment (exactly 30 valid, exactly one scores 5 of 5), checks every right-call
+   line and all 10 consequence lines exist, checks all four quadrants and each nurse's quadrant and plot, and
+   scores both exercise 2 assignments.
+2. **Content.** The contrast-framing grep
+   (`grep -nE ", not |not just|rather than|instead of|isn't|doesn't have to|What's missing|The (problem|issue|point) is" data/script.js`)
+   returns nothing. No gendered pronouns in `data/`, `assets/` or `*.html`; no digits in the page `.html` files;
    no em dashes in `data/`; framework wording matches the spec above.
-3. **Behavior.** LOCK IN gating, Start over, nav on every page, keyboard-only run, reduced motion, two
+3. **Behavior.** LOCK IN gating, every wrong line appearing on the right nurse's row, Start over, nav on every page, keyboard-only run, reduced motion, two
    identical runs, and no network requests from `file://`.
 4. **Fit.** Screenshot both exercise pages before and after the reveal at 1280×720, 1366×768, 1440×900,
    1920×1080 and 2560×1440 (no scrollbar, nothing clipped), and at 390px wide (stacks and scrolls). Look at

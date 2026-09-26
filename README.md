@@ -4,7 +4,7 @@ A short, in-class simulation about managing people who work alongside an AI agen
 
 Everyone plays the same person: the nurse manager of a denial-appeals team at RCMco, a fictional revenue
 cycle management company. An agent now drafts every appeal letter, and the nurses review, fix and improve
-those drafts. The manager has one month of dashboard data on four nurses and two decisions to make.
+those drafts. The manager has one month of dashboard data on five nurses and two decisions to make.
 
 **This is fiction.** RCMco and every person, number and event in it are invented for teaching.
 
@@ -14,8 +14,8 @@ those drafts. The manager has one month of dashboard data on four nurses and two
 |---|---|
 | 2 min | Faculty reads the intro from the facilitator guide. |
 | 1 min | The room forms groups of three, one laptop per group. |
-| 10 min | Exercise 1, **Your dashboard**: give each nurse one call (two Champions, one Coach, one Flag). |
-| 10 min | Exercise 2, **Your champions**: give each champion a job. |
+| 10 min | Exercise 1, **Your dashboard**: make one call on each nurse (two Champions, one Coach and two Flags). |
+| 10 min | Exercise 2, **Your champions**: give each champion one role. |
 | 5 to 10 min | The room reconvenes for the debrief. |
 
 Each exercise ends with a reveal that shows the right calls and the framework behind them. The facilitator
