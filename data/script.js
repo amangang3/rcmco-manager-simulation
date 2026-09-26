@@ -311,7 +311,7 @@ window.RCM_SCRIPT = {
       {
         eyebrow: "1 · The intro",
         heading: "Read this to the class. It takes about two minutes.",
-        quote: "For the next twenty minutes you are the nurse manager of a denial-appeals team at RCMco. The company has deployed an agent that drafts every appeal letter. Your nurses now review and correct those drafts, and their target has gone from four letters a day to seven at the same quality bar. It is Monday, and you have the first full month of data on five nurses. Get into groups of three with one laptop per group. First, make a call on each nurse. Then decide what role to give your two champions."
+        quote: "For the next twenty minutes you are the nurse manager of a denial-appeals team at RCMco. The company has deployed an AI agent that drafts every appeal letter. Your nurses now review and correct those drafts, and their daily target has gone from four letters to seven at the same quality standard. It is Monday, and you have the first full month of performance data on six nurses. Get into groups of three with one laptop per group. First, decide how you will manage each nurse. Then choose what role to give your two champions. If you have time, there is a short third question about the rest of your team."
       },
       {
         eyebrow: "2 · How to run it",
@@ -321,6 +321,7 @@ window.RCM_SCRIPT = {
           { t: "1 min", v: "Form groups of three, one laptop each, open to Your team." },
           { t: "10 min", v: "Exercise 1: Your dashboard." },
           { t: "10 min", v: "Exercise 2: Your champions." },
+          { t: "5 min, optional", v: "Part 3: Next week. Skip it if time is short." },
           { t: "5 to 10 min", v: "Bring the room back together for the debrief." }
         ],
         tip_label: "If a group stalls on exercise 1, ask:",
@@ -329,21 +330,23 @@ window.RCM_SCRIPT = {
       },
       {
         eyebrow: "3 · Debrief",
-        heading: "Six questions for the room.",
+        heading: "Questions for the room.",
         questions: [
           "Which nurse did your group first want as a champion, and what changed your mind?",
           "If your dashboard could show only two columns, which two would you keep?",
           "What would happen to the team if Nurse A became the example others followed?",
           "Nurses A and E both got a Flag. How would you handle each of them?",
-          "Why might the nurse who gives the best feedback on the agent be a poor choice to train the team?",
+          "Nurses D and F both need coaching. What does each of them need to learn?",
+          "What reason did your group give for Nurse C's role? Did it mention how other nurses see them?",
+          "A year after rollout, the agent learns from every nurse's feedback. How should the agent improvement champion spend their time then?",
           "The case asked whether nurses should get a bonus for output. What does this exercise suggest? Leave the question open. The class has already debated it."
         ]
       },
       {
         eyebrow: "4 · Where the ideas come from",
-        heading: "Champions work best when the role is formal, has protected time and rotates.",
+        heading: "Champions work best when the role is formal and has the manager's support.",
         research: [
-          "Field research on clinics introducing new technology found that when managers chose newer, tech-savvy staff as trainers, experienced staff resisted as a group in three of five sites. Learning worked in the sites where the trainer role rotated and trainees could move into it.",
+          "Field research on clinics introducing new technology found that when managers chose newer, tech-savvy staff as trainers, experienced staff resisted as a group in three of five sites.",
           "Research on spreading new practices across clinics found that formally appointed peer advocates in each role spread new processes well. Their biggest barrier was a lack of protected time to train peers.",
           "Reviews of champions in health technology found that champions promote, teach, support users and connect developers with users. Changes that require people to work differently need more than one champion."
         ],
