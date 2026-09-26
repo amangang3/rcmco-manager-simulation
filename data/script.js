@@ -212,7 +212,9 @@ window.RCM_SCRIPT = {
       agent: "Works with the team that builds the agent. Turns the nurses' edits into recommended fixes and tests new versions before they roll out.",
       people: "Teaches other nurses to review the agent's drafts and leads a weekly huddle on difficult cases."
     },
-    rule: "Each champion takes one role. Choosing a role for one nurse assigns the other role to the other nurse.",
+    reason_label: "Why this role? One sentence.",
+    reason_placeholder: "Example: They are right for this role because...",
+    rule: "Each champion takes one role. Choosing a role for one nurse assigns the other role to the other nurse. Write one sentence for each nurse on why the role fits, then lock in.",
     lock: "LOCK IN",
 
     // Reveal
@@ -225,6 +227,11 @@ window.RCM_SCRIPT = {
       c: "Nurse C sends about half as much feedback as Nurse B, so the development team gets less to work with. The nurse whom others trust most is also no longer teaching."
     },
     your_pick: "Your pick: {role}",
+    your_reason: "Your reason:",
+    reason_check: {
+      b: "Did your reason mention the quality of Nurse B's feedback on the agent?",
+      c: "Did your reason mention how other nurses see Nurse C?"
+    },
     mark_right: "Matches",
     mark_wrong: "Swapped",
     score: "Your group matched {right} of {total} roles.",

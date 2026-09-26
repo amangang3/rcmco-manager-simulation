@@ -5,7 +5,7 @@
   var el = UI.el, text = UI.text;
   var main = document.getElementById("main");
   var ids = RCM.champions.map(function (c) { return c.id; });
-  var roles, locked, cards, side;
+  var roles, reasons, locked, cards, side;
 
   document.title = S.page_title;
 
@@ -29,7 +29,12 @@
           type: "button", class: "opt", "data-nurse": id, "data-role": r.id, "aria-pressed": "false",
           text: r.short, on: { click: function () { choose(id, r.id); } }
         });
-      })))
+      }))),
+      el("div", { class: "reason" }, [
+        el("label", { for: "reason-" + id, text: S.reason_label }),
+        el("textarea", { id: "reason-" + id, rows: "2", maxlength: "200", placeholder: S.reason_placeholder,
+          on: { input: function (ev) { reasons[id] = ev.target.value; update(); } } })
+      ])
     ]);
     cards[id] = card;
     return card;
@@ -55,6 +60,7 @@
 
   function build() {
     roles = {};
+    reasons = {};
     locked = false;
     cards = {};
     main.textContent = "";
@@ -78,7 +84,11 @@
         b.setAttribute("aria-pressed", b.getAttribute("data-role") === roles[n] ? "true" : "false");
       });
     });
-    document.getElementById("lock").disabled = !L.valid2(roles);
+    update();
+  }
+
+  function update() {
+    document.getElementById("lock").disabled = !L.valid2Reasons(roles, reasons);
   }
 
   function framework() {
@@ -100,19 +110,26 @@
   }
 
   function reveal() {
-    if (!L.valid2(roles) || locked) return;
+    if (!L.valid2Reasons(roles, reasons) || locked) return;
     locked = true;
     var results = L.score2(roles);
     var right = results.filter(function (r) { return r.correct; }).length;
 
     results.forEach(function (r, i) {
       var card = cards[r.id];
-      Array.prototype.forEach.call(card.querySelectorAll(".opt"), function (b) { b.disabled = true; });
+      Array.prototype.forEach.call(card.querySelectorAll(".opt, textarea"), function (b) { b.disabled = true; });
       card.appendChild(el("div", { class: "result enter", style: { "--i": i } }, [
         UI.mark(r.correct, S.mark_right, S.mark_wrong),
-        el("p", { class: "reveal-line" }, [
-          el("span", { class: "who", text: text(S.your_pick, { role: UI.role(r.picked).short }) + ". " }),
-          r.correct ? S.right[r.id] : S.wrong[r.id]
+        el("div", { class: "result-body" }, [
+          el("p", { class: "your-reason" }, [
+            el("span", { class: "who", text: S.your_reason + " " }),
+            "\u201c" + reasons[r.id].trim() + "\u201d"
+          ]),
+          el("p", { class: "reveal-line" }, [
+            el("span", { class: "who", text: text(S.your_pick, { role: UI.role(r.picked).short }) + ". " }),
+            r.correct ? S.right[r.id] : S.wrong[r.id]
+          ]),
+          el("p", { class: "reason-check", text: S.reason_check[r.id] })
         ])
       ]));
     });

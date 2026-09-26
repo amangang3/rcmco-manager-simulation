@@ -273,6 +273,17 @@ button { font: inherit; color: inherit; }
 .opt[disabled] { cursor: default; }
 .ncard .result { flex-direction: row; flex-wrap: nowrap; align-items: baseline; gap: 0.6rem; padding-top: 0.6rem; border-top: var(--hair); }
 .ncard .result .reveal-line { font-size: 1rem; }
+.result-body { display: grid; gap: 0.3rem; }
+.your-reason { font-size: 0.95rem; overflow-wrap: anywhere; }
+.reason-check { font-size: 0.9rem; color: var(--muted); }
+.reason { display: grid; gap: 0.25rem; }
+.reason label { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
+.reason textarea {
+  width: 100%; resize: none; font: inherit; font-size: 0.95rem; line-height: 1.35; color: var(--text);
+  padding: 0.4rem 0.6rem; border: 0.75px solid var(--dim); border-radius: var(--radius); background: var(--surface);
+}
+.reason textarea::placeholder { color: var(--dim); }
+.reason textarea:disabled { background: var(--panel); color: var(--muted); }
 
 .roles { display: grid; gap: 1rem; align-content: start; }
 .role h3 { font-size: 1.6rem; color: var(--navy); line-height: 1.2; }
