@@ -20,37 +20,39 @@ window.RCM_SCRIPT = {
     page_title: "The Manager's Monday",
     eyebrow: "RCMco · Denial appeals",
     title: "The Manager's Monday",
-    standfirst: "RCMco's agent now drafts every insurance appeal letter. You manage the five nurses who review those drafts.",
+    standfirst: "An AI agent now drafts every insurance appeal letter at RCMco. You manage the six nurses who review those drafts.",
     sections: [
       {
         eyebrow: "Who you are",
-        heading: "Everyone in the room plays the nurse manager.",
+        heading: "Everyone in the room plays the role of a nurse manager.",
         body: [
-          "You manage a denial-appeals team of five nurses at RCMco.",
-          "Pay, targets and the agent itself are set above you.",
-          "You decide how to handle each nurse and which nurses to rely on."
+          "You supervise six nurses who write insurance appeal letters. An appeal letter is a document sent to an insurer arguing that a denied claim should be reconsidered and paid.",
+          "Compensation, performance targets, and the AI agent have already been set by senior leadership.",
+          "You cannot change those decisions. Your job is to decide how to manage each nurse and which nurses to rely on most heavily."
         ]
       },
       {
-        eyebrow: "What changed",
-        heading: "An agent now drafts every appeal letter, and nurses review the drafts.",
+        eyebrow: "What changed?",
+        heading: "An AI agent now drafts every insurance appeal letter, and nurses review the drafts before they are sent.",
         body: [
-          "The agent reads the patient record, checks the insurer's criteria and writes a draft letter.",
-          "A nurse reviews each draft, corrects it and sends it.",
-          "Nurses report the agent's mistakes through a feedback tool in the drafting screen.",
-          "Each letter gets an automatic quality score against clinical criteria before it goes out.",
-          "The daily target rose from {before} to {letters} letters, with the same {quality}% quality bar.",
-          "It is Monday morning. You have the first full month of data."
+          "For each case, the agent reviews the patient's medical record, checks the insurer's coverage criteria, and drafts a letter arguing why the denied claim should be paid.",
+          "A nurse then reviews the draft, corrects any errors or omissions, and submits the final version to the insurer.",
+          "When nurses find mistakes, they can report them through a feedback tool built into the drafting system.",
+          "Before a letter is sent, it receives an automatic quality score based on clinical criteria.",
+          "After the agent was introduced, the daily productivity target increased from {before} to {letters} letters per nurse, while the required quality standard remained unchanged at {quality}%.",
+          "It is Monday morning. You have just received the first full month of performance data since the rollout."
         ]
       },
       {
         eyebrow: "What you will do",
-        heading: "Two decisions, about ten minutes each.",
+        heading: "You will make two decisions. Each should take about 10 minutes.",
         steps: [
-          "Review your dashboard and make one call on each of your five nurses.",
-          "Give your two champions their roles."
+          { text: "Review your team dashboard.",
+            sub: "For each of your six nurses, decide how you will manage them over the coming month." },
+          { text: "Select and assign your champions.",
+            sub: "Choose the two nurses you want to rely on most heavily and assign each of them a role." }
         ],
-        after: "Work in groups of three on one laptop."
+        after: "If your group has time, a short optional third question follows. Work in groups of three on one laptop."
       }
     ],
     begin: "BEGIN",

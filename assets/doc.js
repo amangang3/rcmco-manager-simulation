@@ -29,7 +29,12 @@
     head(S, el("p", { class: "standfirst", text: S.standfirst })).forEach(function (n) { main.appendChild(n); });
     S.sections.forEach(function (s) {
       main.appendChild(section(s, paras(s.body).concat([
-        s.steps ? el("ol", { class: "steps-list" }, s.steps.map(function (t) { return el("li", { text: text(t) }); })) : null,
+        s.steps ? el("ol", { class: "steps-list" }, s.steps.map(function (t) {
+          return el("li", {}, [el("div", {}, [
+            el("strong", { text: text(t.text) }),
+            t.sub ? el("span", { class: "step-sub", text: text(t.sub) }) : null
+          ])]);
+        })) : null,
         s.after ? el("p", { class: "after", text: s.after }) : null
       ])));
     });

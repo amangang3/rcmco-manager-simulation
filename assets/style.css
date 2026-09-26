@@ -95,6 +95,7 @@ button { font: inherit; color: inherit; }
 .doc .lede { font-size: 1.1rem; color: var(--muted); margin-top: 0.9rem; }
 .steps-list { counter-reset: s; display: grid; gap: 0.6rem; }
 .steps-list li { counter-increment: s; display: grid; grid-template-columns: 2rem 1fr; align-items: baseline; }
+.step-sub { display: block; font-weight: 400; color: var(--text); margin-top: 0.1rem; }
 .steps-list li::before {
   content: counter(s); display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem;
   border-radius: 50%; background: var(--navy); color: #fff; font-size: 0.8rem; font-weight: 700;
