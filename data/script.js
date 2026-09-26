@@ -9,7 +9,8 @@ window.RCM_SCRIPT = {
     steps: [
       { n: 1, label: "Your team",      href: "index.html" },
       { n: 2, label: "Your dashboard", href: "dashboard.html" },
-      { n: 3, label: "Your champions", href: "champions.html" }
+      { n: 3, label: "Your champions", href: "champions.html" },
+      { n: 4, label: "Next week (optional)", href: "followup.html" }
     ],
     guide: "Facilitator guide",
     guide_href: "facilitate.html"
@@ -260,6 +261,42 @@ window.RCM_SCRIPT = {
     closing: "Name the part of the change each champion owns. Nurse B works directly with the agent's development team. Nurse C teaches the team and can help bring back Nurse E, who writes most letters without the agent. Nurses D and F, who are being coached, can learn from both.",
     end: "If your group has time, continue to a short optional question about the rest of your team. Otherwise, this is the end of the exercise, and your faculty will bring the room back together.",
     next: "OPTIONAL: NEXT WEEK",
+    back: "Back to Your team",
+    reset: "Start over"
+  },
+
+  // followup.html. Optional part 3. Nothing is scored, stored or sent.
+  ex3: {
+    page_title: "Next week · The Manager's Monday",
+    eyebrow: "Optional · You are the nurse manager · The following Monday",
+    task: "You have named two champions. How will you keep the rest of your team motivated?",
+    team_title: "Your team now",
+    reminders: {
+      a: "rarely checks the agent's drafts",
+      b: "your agent improvement champion",
+      c: "your agent adoption champion",
+      d: "rewrites most drafts from the beginning",
+      e: "writes most letters without the agent",
+      f: "rereads every patient record before opening the draft"
+    },
+    question: "Naming champions raises their standing on the team. Nurses D and F are being coached while two colleagues were chosen. What will you say or do this week so they stay motivated, and what about Nurses A and E?",
+    plan_label: "Your group's plan, in two or three sentences",
+    plan_placeholder: "This week, we will...",
+    show: "SHOW FOUR APPROACHES",
+    your_plan: "Your plan:",
+    approaches_title: "Four approaches to compare with your plan",
+    approaches: [
+      { lead: "Give more nurses a part of the change.",
+        text: "Name an owner for each part of the rollout. Each owner learns their part and teaches it to the rest of the team, so nobody feels left behind." },
+      { lead: "Be open about what you track.",
+        text: "Tell the team that you look at how each nurse changes the agent's drafts and why. Explain that you use it to improve the agent and to focus coaching." },
+      { lead: "Present the agent as taking over tedious work.",
+        text: "The time it saves goes to stronger arguments, deeper research and clinical judgment." },
+      { lead: "Make every nurse's feedback count.",
+        text: "After rollout, the agent improves from the whole team's edits and feedback. Careful review by any nurse, including those being coached, makes the agent better." }
+    ],
+    discuss: "Discuss: which of these would matter most to Nurse D and Nurse F? Which would matter most to Nurse E?",
+    end: "This is the end of the exercise. Your faculty will bring the room back together.",
     back: "Back to Your team",
     reset: "Start over"
   },
