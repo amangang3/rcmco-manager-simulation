@@ -257,8 +257,9 @@ window.RCM_SCRIPT = {
         { k: "After rollout", v: "The agent learns from every nurse's edits and feedback, so the champion's job shifts from giving feedback to helping other nurses give good feedback." }
       ]
     },
-    closing: "For both champions, make the role formal, protect time for it, give them a direct line to you and the development team, and rotate the role over time. Nurse D is a candidate once coached. Nurse C is well placed to help bring Nurse E back to the agent.",
-    end: "This is the end of the exercise. Your faculty will bring the room back together.",
+    closing: "Name the part of the change each champion owns. Nurse B works directly with the agent's development team. Nurse C teaches the team and can help bring back Nurse E, who writes most letters without the agent. Nurses D and F, who are being coached, can learn from both.",
+    end: "If your group has time, continue to a short optional question about the rest of your team. Otherwise, this is the end of the exercise, and your faculty will bring the room back together.",
+    next: "OPTIONAL: NEXT WEEK",
     back: "Back to Your team",
     reset: "Start over"
   },

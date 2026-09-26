@@ -151,11 +151,12 @@
           return acc.concat([el("dt", { text: row.k }), el("dd", { text: row.v })]);
         }, []))
       ]),
-      el("p", { class: "closing enter", style: { "--i": 2 }, text: S.closing }),
-      el("div", { class: "panel-foot enter", style: { "--i": 3 } }, [
+      el("p", { class: "closing enter", style: { "--i": 3 }, text: S.closing }),
+      el("div", { class: "panel-foot enter", style: { "--i": 4 } }, [
         score,
         el("p", { class: "end", text: S.end }),
         el("div", { class: "actions" }, [
+          el("a", { class: "btn", href: "followup.html", text: S.next }),
           el("a", { class: "link", href: "index.html", text: S.back }),
           el("button", { type: "button", class: "link", text: S.reset, on: { click: startOver } })
         ])
