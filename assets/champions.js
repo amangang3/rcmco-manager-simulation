@@ -21,19 +21,23 @@
         el("p", { class: "stats", text: text(S.stats, {
           letters: n.letters, quality: n.quality, edited: n.edited, notes: n.notes }) })
       ]),
-      el("ul", {}, S.bullets[id].map(function (b) { return el("li", { text: b }); })),
-      el("div", { class: "choice", role: "group", "aria-label": text(S.pick_label, { name: n.name }) }, [
-        el("span", { class: "choice-label", "aria-hidden": "true", text: text(S.pick_label, { name: n.name }) })
-      ].concat(RCM.roles.map(function (r) {
-        return el("button", {
-          type: "button", class: "opt", "data-nurse": id, "data-role": r.id, "aria-pressed": "false",
-          text: r.short, on: { click: function () { choose(id, r.id); } }
-        });
-      }))),
-      el("div", { class: "reason" }, [
-        el("label", { for: "reason-" + id, text: S.reason_label }),
-        el("textarea", { id: "reason-" + id, rows: "2", maxlength: "200", placeholder: S.reason_placeholder,
-          on: { input: function (ev) { reasons[id] = ev.target.value; update(); } } })
+      el("div", { class: "ncard-body" }, [
+        el("div", { class: "ncard-act" }, [
+          el("ul", {}, S.bullets[id].map(function (b) { return el("li", { text: b }); })),
+          el("div", { class: "choice", role: "group", "aria-label": text(S.pick_label, { name: n.name }) }, [
+            el("span", { class: "choice-label", "aria-hidden": "true", text: text(S.pick_label, { name: n.name }) })
+          ].concat(RCM.roles.map(function (r) {
+            return el("button", {
+              type: "button", class: "opt", "data-nurse": id, "data-role": r.id, "aria-pressed": "false",
+              text: r.short, on: { click: function () { choose(id, r.id); } }
+            });
+          })))
+        ]),
+        el("div", { class: "reason" }, [
+          el("label", { for: "reason-" + id, text: S.reason_label }),
+          el("textarea", { id: "reason-" + id, rows: "4", maxlength: "200", placeholder: S.reason_placeholder,
+            on: { input: function (ev) { reasons[id] = ev.target.value; update(); } } })
+        ])
       ])
     ]);
     cards[id] = card;
