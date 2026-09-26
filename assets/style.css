@@ -343,6 +343,7 @@ button { font: inherit; color: inherit; }
   .nav-steps a { font-size: 0.82rem; }
   .choice-label { width: 100%; }
   .ncard-body { grid-template-columns: minmax(0, 1fr); }
+  .reason textarea { field-sizing: content; min-height: calc(4lh + 0.8rem); }
   .stage { padding: 1rem; }
   .split-60, .split-55, .split-38 { grid-template-columns: minmax(0, 1fr); }
   .dash { padding: 0.8rem; overflow: visible; }

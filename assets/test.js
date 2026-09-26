@@ -20,16 +20,16 @@
   })(0, {});
 
   var valid = all.filter(L.quotaMet);
-  check("Exactly 30 valid call assignments (found " + valid.length + ")", valid.length === 30);
+  check("Exactly 90 valid call assignments (found " + valid.length + ")", valid.length === 90);
   var perfect = valid.filter(function (p) {
     return L.score1(p).every(function (r) { return r.correct; });
   });
-  check("Exactly one valid assignment scores 5 of 5", perfect.length === 1);
+  check("Exactly one valid assignment scores 6 of 6", perfect.length === 1);
 
   var invalidOk = all.filter(function (p) {
     var c = {};
     Object.keys(p).forEach(function (k) { c[p[k]] = (c[p[k]] || 0) + 1; });
-    var isValid = Object.keys(p).length === 5 && c.champion === 2 && c.coach === 1 && c.flag === 2;
+    var isValid = Object.keys(p).length === 6 && c.champion === 2 && c.coach === 2 && c.flag === 2;
     return !isValid && L.quotaMet(p);
   });
   check("quotaMet is false for every invalid assignment (" + (all.length - valid.length) + " checked)", invalidOk.length === 0);
@@ -48,7 +48,7 @@
   });
   var wrongCount = 0;
   Object.keys(S.ex1.wrong).forEach(function (id) { wrongCount += Object.keys(S.ex1.wrong[id]).length; });
-  check("Exactly 10 consequence lines (found " + wrongCount + ")", wrongCount === 10);
+  check("Exactly 12 consequence lines (found " + wrongCount + ")", wrongCount === 12);
   labelIds.forEach(function (l) {
     check("Definition and counter name for " + l, !!S.ex1.defs[l] && !!S.ex1.counter_names[l]);
   });
@@ -62,6 +62,18 @@
   function count(r) { return r.filter(function (x) { return x.correct; }).length; }
   check("Exercise 2 right assignment scores 2 of 2", L.valid2(right2) && count(L.score2(right2)) === 2);
   check("Exercise 2 swapped assignment scores 0 of 2", L.valid2(swapped) && count(L.score2(swapped)) === 0);
+  var long = "Other nurses already trust them.", reasonsOk = { b: long, c: long };
+  check("valid2Reasons is true with valid roles and two long reasons", L.valid2Reasons(right2, reasonsOk));
+  check("valid2Reasons is false when a reason is missing", !L.valid2Reasons(right2, { b: long }) && !L.valid2Reasons(right2, {}) && !L.valid2Reasons(right2));
+  check("valid2Reasons is false when a trimmed reason is under 15 characters",
+    !L.valid2Reasons(right2, { b: long, c: "   fourteen chars   ".slice(0, 20) }) && !L.valid2Reasons(right2, { b: long, c: "12345678901234" })
+    && L.valid2Reasons(right2, { b: long, c: "  123456789012345  " }));
+  check("valid2Reasons is false when roles are invalid", !L.valid2Reasons({ b: "agent", c: "agent" }, reasonsOk));
+  check("Every nurse has a floor line and a Next week reminder", RCM.nurses.every(function (n) {
+    return !!S.ex1.floor[n.id] && !!S.ex3.reminders[n.id];
+  }));
+  check("Next week has exactly four approaches, each with lead and text", S.ex3.approaches.length === 4 &&
+    S.ex3.approaches.every(function (a) { return !!a.lead && !!a.text; }));
   check("Exercise 2 rejects matching or missing roles",
     !L.valid2({ b: "agent", c: "agent" }) && !L.valid2({ b: "agent" }) && !L.valid2({}));
   RCM.champions.forEach(function (c) {
