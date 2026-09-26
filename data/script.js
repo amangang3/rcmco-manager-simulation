@@ -20,35 +20,37 @@ window.RCM_SCRIPT = {
     page_title: "The Manager's Monday",
     eyebrow: "RCMco · Denial appeals",
     title: "The Manager's Monday",
-    standfirst: "The agent writes the letters now. Your job is to work out who is doing theirs.",
+    standfirst: "RCMco's agent now drafts every insurance appeal letter. You manage the five nurses who review those drafts.",
     sections: [
       {
         eyebrow: "Who you are",
-        heading: "Everyone in the room plays the same person: the nurse manager.",
+        heading: "Everyone in the room plays the nurse manager.",
         body: [
-          "You run a denial-appeals team of four nurses at RCMco.",
-          "You cannot change pay, targets or the agent.",
-          "You decide who you rely on, who you coach, and who you step in with."
+          "You manage a denial-appeals team of five nurses at RCMco.",
+          "Pay, targets and the agent itself are set above you.",
+          "You decide how to handle each nurse and which nurses to rely on."
         ]
       },
       {
         eyebrow: "What changed",
-        heading: "An agent drafts every appeal letter. Your nurses review it.",
+        heading: "An agent now drafts every appeal letter, and nurses review the drafts.",
         body: [
-          "The agent reads the record, checks the insurer's criteria and drafts the letter.",
-          "Each nurse reviews the draft, fixes it, and reports what the agent got wrong.",
-          "The target went from {before} to {letters} letters a day, at the same {quality}% quality bar.",
-          "It is Monday morning, and you have your first full month of data."
+          "The agent reads the patient record, checks the insurer's criteria and writes a draft letter.",
+          "A nurse reviews each draft, corrects it and sends it.",
+          "Nurses report the agent's mistakes through a feedback tool in the drafting screen.",
+          "Each letter gets an automatic quality score against clinical criteria before it goes out.",
+          "The daily target rose from {before} to {letters} letters, with the same {quality}% quality bar.",
+          "It is Monday morning. You have the first full month of data."
         ]
       },
       {
         eyebrow: "What you will do",
         heading: "Two decisions, about ten minutes each.",
         steps: [
-          "Read your dashboard and give each of your four nurses one call.",
-          "Decide what job to give your two champions."
+          "Review your dashboard and make one call on each of your five nurses.",
+          "Give your two champions their roles."
         ],
-        after: "Work as a group of three, on one laptop."
+        after: "Work in groups of three on one laptop."
       }
     ],
     begin: "BEGIN",
@@ -59,77 +61,85 @@ window.RCM_SCRIPT = {
   ex1: {
     page_title: "Your dashboard · The Manager's Monday",
     eyebrow: "You are the nurse manager · Monday morning",
-    task: "Give each nurse one call: two Champions, one Coach, one Flag.",
+    task: "Make one call on each nurse: two Champions, one Coach and two Flags.",
     table_label: "Your team's first full month",
     cols: {
       nurse: "Nurse",
       letters: "Letters a day",
       letters_sub: "target {letters}",
-      quality: "Quality",
+      quality: "Quality score",
       quality_sub: "bar {quality}%",
+      used: "Uses the agent's draft",
+      used_sub: "share of letters",
       edited: "Drafts they edit",
-      edited_sub: "",
-      notes: "Feedback notes a week",
-      notes_sub: "",
+      edited_sub: "share of drafts used",
+      notes: "Feedback notes",
+      notes_sub: "per week",
       call: "Your call"
     },
     target_mark: "Target",
 
     floor: {
-      a: "Clears the queue by lunch. Rarely has the patient record open.",
-      b: "Logs agent mistakes in the feedback tool most days.",
-      c: "Steady. Hits the target and flags anything that looks off.",
-      d: "Rewrites most drafts from scratch. Says they trust their own letters more."
+      a: "Finishes the queue by lunch. Rarely opens the patient record.",
+      b: "Logs agent errors in the feedback tool most days.",
+      c: "Meets the target every day and reports anything that looks wrong.",
+      d: "Rewrites most drafts from the beginning. Says they trust their own letters more.",
+      e: "Writes letters from scratch in a separate document. Says the agent does not know the payers."
     },
 
-    defs_title: "What the calls mean",
+    defs_title: "What each call means",
     defs: {
-      champion: "Gets the most out of the agent and checks its work. You'll give them a job.",
-      coach: "Checks carefully, but isn't getting the benefit of the agent yet. You'll help them build the skill.",
-      flag: "Isn't really checking the agent's work, or isn't using the agent at all. You'll step in."
+      champion: "Uses the agent's drafts, checks them closely and reports errors. You will give them a champion role.",
+      coach: "Checks the agent's drafts closely and is still learning to get full value from them. You will help them build that skill.",
+      flag: "Is not checking the agent's drafts, or is not using the agent. You will step in."
     },
     counter_title: "Your calls",
-    counter_names: { champion: "Champions", coach: "Coach", flag: "Flag" },
+    counter_names: { champion: "Champions", coach: "Coach", flag: "Flags" },
     counter_item: "{name} {count} of {quota}",
-    counter_rule: "LOCK IN opens when every nurse has a call and the counts match exactly.",
+    counter_rule: "LOCK IN becomes available when every nurse has a call and the counts match.",
     lock: "LOCK IN",
 
     // Reveal
     right: {
-      a: "The fastest nurse on the team, and they change 2 drafts in 100 and send no feedback. On output alone they look like your star. The letters are the agent's, unchecked.",
-      b: "Above target, and they fix a third of the drafts and report what the agent gets wrong.",
-      c: "On target at the quality bar, checking carefully and reporting steadily. A champion doesn't have to be the fastest.",
-      d: "They check everything, including what the agent already gets right, so their output is far below target. The care is there. The skill with the agent isn't yet. Show them where the agent is reliable."
+      a: "Nurse A has the highest output on the team. They edit 2% of drafts and send no feedback, so the agent's letters go out largely unchecked. Their quality score is high because the scorer checks each letter against the criteria, and a clean agent draft passes. The scorer does not catch unusual cases that need a nurse's judgment.",
+      b: "Nurse B is above target, edits about a third of the drafts and sends the most feedback on the team.",
+      c: "Nurse C meets the target at the quality bar, edits 40% of drafts and reports errors every week.",
+      d: "Nurse D uses every agent draft and then rewrites most of it, so their output is below target. They check closely. Show them which parts of the draft the agent gets right.",
+      e: "Nurse E starts only 8% of letters from the agent's draft and sends no feedback. Their output matches the old target of 4 letters a day. Ask why they avoid the agent before deciding what to do."
     },
     wrong: {
       a: {
-        champion: "You made A a champion. The team copies their pace, not their checking. Within weeks edits fall across the team, and an audit finds letters built on the wrong criteria.",
-        coach: "Coaching A on pace misses the problem. They have plenty of pace. What's missing is any checking of the agent's work, and a coaching plan about speed won't touch it."
+        champion: "The team would copy Nurse A's habits. Edit rates would fall across the team, and letters built on the wrong criteria would start to go out.",
+        coach: "Coaching would focus on skill with the agent, and Nurse A already gets high output from it. They rarely check its drafts, which calls for an audit."
       },
       b: {
-        coach: "B is above target and checking well. Coaching them spends your time where it isn't needed and tells your best reviewer they're behind.",
-        flag: "Flagging B for heavy editing punishes the thing you most want. The rest of the team learns to stop fixing drafts."
+        coach: "Nurse B is above target and reviews closely. Coaching would use your time where it is not needed and tell your strongest reviewer they are behind.",
+        flag: "Nurse B edits drafts and reports errors, which is the behavior you want. A flag would teach the team to stop correcting drafts."
       },
       c: {
-        coach: "C is on target at the quality bar and checking carefully. There's nothing to coach, and you've passed over a champion.",
-        flag: "C is doing exactly the checking the agent needs. Flagging them tells the team that careful review gets you in trouble."
+        coach: "Nurse C meets the target at the quality bar and reviews closely. Coaching would use your time where it is not needed, and you would lose a champion.",
+        flag: "Nurse C checks every draft they use and reports errors. A flag would tell the team that careful review gets people in trouble."
       },
       d: {
-        champion: "Make D a champion and the team copies their habit of rewriting from scratch. Output stalls, and the agent starts to look useless.",
-        flag: "D checks every draft. Flagging them treats careful review as the problem. What they need is skill with the agent, not an audit."
+        champion: "The team would copy Nurse D's habit of rewriting drafts from the beginning. Output would drop, and the agent would look unhelpful.",
+        flag: "Nurse D uses the agent on every letter and checks each draft closely. An audit would signal that careful review is a problem. Nurse D needs help working faster with the agent."
+      },
+      e: {
+        champion: "Nurse E rarely uses the agent. Other nurses would take the role as permission to skip it.",
+        coach: "Coaching assumes a nurse is working with the agent. Nurse E has mostly stopped using it. Find out why first."
       }
     },
     your_call: "Your call: {call}",
-    mark_right: "Right call",
+    mark_right: "Matches",
     mark_wrong: "Different call",
-    score: "Your group called {right} of {total}.",
+    score: "Your group matched {right} of {total} calls.",
     next: "NEXT: YOUR CHAMPIONS",
     reset: "Start over",
 
     // Framework 1, as on the slide
     fw: {
       eyebrow: "Framework 1",
-      title: "With agents, managers must measure oversight, not just output",
+      title: "With agents, managers must measure oversight, in addition to output",
       x: "Output",
       x_sub: "Volume and quality against the bar",
       y: "Oversight",
@@ -137,25 +147,33 @@ window.RCM_SCRIPT = {
       low: "Low",
       high: "High",
       zones: {
-        champion: {
-          def: "Utilizes agent potential and actively reviews agent output and improves with feedback",
-          response: "Give them a job"
-        },
         coach: {
+          label: "Coach",
           def: "Reviews carefully, but not yet fully utilizing agent potential",
-          response: "Build the skill: show them where the agent is reliable, pair them with a champion"
+          response: "Show them which parts of the draft the agent gets right, and pair them with a champion"
         },
-        flag: {
-          def: "Not checking the agent's work or not utilizing agents at all",
-          response: "Step in: audit a sample of their work, reset expectations"
+        champion: {
+          label: "Champion",
+          def: "Utilizes agent's potential and actively reviews agent output and improves it with feedback",
+          response: "Give them a champion role"
+        },
+        flag_low: {
+          label: "Flag",
+          def: "Not utilizing agent at all",
+          response: "Ask why, then show them the agent's letters next to the team's, and pair them with a champion"
+        },
+        flag_high: {
+          label: "Flag",
+          def: "Utilizes agent's potential, but not checking the agent's work",
+          response: "Audit a sample of their letters, and make checking part of the job"
         }
       },
       dot_label: "{name}: {zone}",
       box_title: "What is different with agents?",
       box: [
-        { k: "Before agents", v: "The nurse wrote the letter. Output reflected their effort and judgment, so output metrics were a good measure." },
-        { k: "With agents", v: "The agent writes the letter. The nurse's value is the review, and output measures don't reflect this." },
-        { k: "Key takeaway", v: "Measure oversight alongside output, or the highest approver looks like the best performer." }
+        { k: "Before agents", v: "The nurse wrote the letter. Output reflected their effort and judgment so output metrics were a good measure." },
+        { k: "With agents", v: "The agent writes the letter. The nurse's value is the review, and output measures alone don't reflect this." },
+        { k: "Key takeaway", v: "Measure oversight alongside output, or the highest approver looks like a high performer." }
       ]
     }
   },
@@ -164,52 +182,52 @@ window.RCM_SCRIPT = {
   ex2: {
     page_title: "Your champions · The Manager's Monday",
     eyebrow: "You are the nurse manager · Monday afternoon",
-    task: "Nurse B and Nurse C are your champions. Give each one a job.",
+    task: "Nurse B and Nurse C are your champions. Give each of them one role.",
     stats: "{letters} letters a day · {quality}% · edits {edited}% · {notes} notes a week",
     bullets: {
       b: [
         "Three years at RCMco.",
-        "First to spot when the agent cites the wrong guideline.",
+        "Usually the first to spot when the agent cites the wrong guideline.",
         "Newer nurses ask them for help with the tool.",
-        "Some of the veterans call them 'the tech person'."
+        "Some experienced nurses call them 'the tech person.'"
       ],
       c: [
-        "Sixteen years, most of them as an ICU nurse.",
-        "Peers bring them their hardest cases.",
-        "Was the loudest skeptic until they saw the agent's letters side by side with the team's.",
-        "Not the fastest. Never misses the bar."
+        "Sixteen years in nursing, most of them in intensive care.",
+        "Other nurses bring them their hardest cases.",
+        "Was openly skeptical of the agent until they compared its letters with the team's.",
+        "Meets the quality bar every week."
       ]
     },
-    pick_label: "Job for {name}",
-    roles_title: "The two jobs",
+    pick_label: "Role for {name}",
+    roles_title: "The two roles",
     role_desc: {
-      agent: "Works with the agent's development team. Turns the team's edits into fixes, and tests new versions before they roll out.",
-      people: "Teaches the team to review the agent's drafts well, and runs the weekly huddle on hard cases."
+      agent: "Works with the team that builds the agent. Turns the nurses' edits into recommended fixes and tests new versions before they roll out.",
+      people: "Teaches other nurses to review the agent's drafts and leads a weekly huddle on difficult cases."
     },
-    rule: "Each champion gets one job. Picking a job for one gives the other nurse the other job.",
+    rule: "Each champion takes one role. Choosing a role for one nurse assigns the other role to the other nurse.",
     lock: "LOCK IN",
 
     // Reveal
     right: {
-      b: "B's specific catches are exactly what the development team needs. Every note becomes a fix.",
-      c: "Peers already bring C their hardest cases, and a converted skeptic is the most persuasive teacher on the floor."
+      b: "Nurse B's error reports are specific, and the agent's development team can act on them.",
+      c: "Other nurses already trust Nurse C with hard cases. As a former skeptic, they can speak to the doubts other nurses have."
     },
     wrong: {
-      b: "You sent B to teach the veterans. Several stop coming: 'they've been here three years.' Adoption stalls on the nurses who most needed it. Research on clinics adopting new technology found the same thing: when newer staff were made the trainers, experienced staff resisted as a group.",
-      c: "C sends good feedback, but half as much as B, so the development team hears less. Meanwhile the one person the veterans would follow isn't teaching anyone."
+      b: "Experienced nurses are less likely to take training from a colleague with three years on the team, so adoption slows among the nurses who most need it. Field research on clinics adopting new technology found that when managers chose newer staff as trainers, experienced staff resisted as a group.",
+      c: "Nurse C sends about half as much feedback as Nurse B, so the development team gets less to work with. The nurse whom others trust most is also no longer teaching."
     },
     your_pick: "Your pick: {role}",
-    mark_right: "Right job",
+    mark_right: "Matches",
     mark_wrong: "Swapped",
-    score: "Your group placed {right} of {total}.",
+    score: "Your group matched {right} of {total} roles.",
 
     // Framework 2, as on the slide
     fw: {
       eyebrow: "Framework 2",
-      title: "A champion improves either the agent or the people",
+      title: "A champion improves either the agent or its users",
       rows: [
         { k: "The job",
-          agent: "Turns the team's edits into fixes to the agent; tests new versions before rollout",
+          agent: "Turns the team's edits into recommendations for fixes to the agent, tests new versions before rollout",
           people: "Teaches peers to review agent drafts, then reinforces careful review in huddles" },
         { k: "Pick someone who",
           agent: "Reviews every draft, catches agent errors, writes specific feedback",
@@ -219,8 +237,8 @@ window.RCM_SCRIPT = {
           people: "Not visible: ask who people go to with hard cases" }
       ]
     },
-    closing: "Treat every champion the same way: appoint them formally, protect their time, give them a channel to you and the development team, and rotate the role. Once Nurse D is coached, they are next.",
-    end: "That's the exercise. Your faculty will bring the room back together.",
+    closing: "For both champions, make the role formal, protect time for it, give them a direct line to you and the development team, and rotate the role over time. Nurse D is a candidate once coached. Nurse C is well placed to help bring Nurse E back to the agent.",
+    end: "This is the end of the exercise. Your faculty will bring the room back together.",
     back: "Back to Your team",
     reset: "Start over"
   },
@@ -230,12 +248,12 @@ window.RCM_SCRIPT = {
     page_title: "Facilitator guide · The Manager's Monday",
     eyebrow: "Facilitator guide",
     title: "Run it in about twenty-five minutes, in groups of three",
-    lede: "Everyone plays the same nurse manager. The two reveal screens are the answer key and carry both frameworks, so this guide holds only the intro, the timing and the debrief.",
+    lede: "Everyone plays the same nurse manager. The reveal screens show both frameworks, so this guide covers the intro, the timing and the debrief.",
     sections: [
       {
         eyebrow: "1 · The intro",
         heading: "Read this to the class. It takes about two minutes.",
-        quote: "For the next twenty minutes you are the nurse manager of a denial-appeals team at RCMco. Your company has deployed an agent that drafts every appeal letter. Your nurses now review, fix and improve those drafts instead of writing from scratch, and their target has gone from four letters a day to seven at the same quality bar. It's Monday, and you have your first full month of data on four nurses. Get into groups of three, one laptop between you. First decide what call to make on each nurse. Then decide what job to give your best two."
+        quote: "For the next twenty minutes you are the nurse manager of a denial-appeals team at RCMco. The company has deployed an agent that drafts every appeal letter. Your nurses now review and correct those drafts, and their target has gone from four letters a day to seven at the same quality bar. It is Monday, and you have the first full month of data on five nurses. Get into groups of three with one laptop per group. First, make a call on each nurse. Then decide what role to give your two champions."
       },
       {
         eyebrow: "2 · How to run it",
@@ -248,30 +266,30 @@ window.RCM_SCRIPT = {
           { t: "5 to 10 min", v: "Bring the room back together for the debrief." }
         ],
         tip_label: "If a group stalls on exercise 1, ask:",
-        tip: "Which two columns would you look at if you could only see two?",
-        after: "You can close with the two framework slides. They carry the same content as the reveal screens."
+        tip: "Which two columns would you look at if you could see only two?",
+        after: "You can close with the two framework slides. They match the reveal screens."
       },
       {
         eyebrow: "3 · Debrief",
         heading: "Six questions for the room.",
         questions: [
-          "Who did your group want to make a champion first, and what changed your mind?",
+          "Which nurse did your group first want as a champion, and what changed your mind?",
           "If your dashboard could show only two columns, which two would you keep?",
-          "What would it cost the team if Nurse A were the model everyone copied?",
-          "Why does Nurse D need coaching and not an audit?",
-          "Why is the person who improves the agent often the wrong person to teach the team?",
-          "The case asked whether nurses should get a bonus for output. What does this exercise suggest? (Leave it open. The class has argued it already.)"
+          "What would happen to the team if Nurse A became the example others followed?",
+          "Nurses A and E both got a Flag. How would you handle each of them?",
+          "Why might the nurse who gives the best feedback on the agent be a poor choice to train the team?",
+          "The case asked whether nurses should get a bonus for output. What does this exercise suggest? Leave the question open. The class has already debated it."
         ]
       },
       {
         eyebrow: "4 · Where the ideas come from",
-        heading: "Champions work when the role is formal, protected and shared.",
+        heading: "Champions work best when the role is formal, has protected time and rotates.",
         research: [
-          "Field research on clinics introducing new technology found that when managers made newer, tech-savvy staff the trainers, experienced staff resisted as a group in three of five sites. Learning worked where the trainer role rotated, so trainees could move up into it.",
-          "Research on spreading new practices across clinics found that formally appointed peer advocates in each role spread new processes well. The biggest barrier was that they had no protected time to train peers.",
-          "Reviews of champions in health technology found that champions promote, teach, support and act as a go-between for developers and users. More than one champion is needed when people have to change how they work."
+          "Field research on clinics introducing new technology found that when managers chose newer, tech-savvy staff as trainers, experienced staff resisted as a group in three of five sites. Learning worked in the sites where the trainer role rotated and trainees could move into it.",
+          "Research on spreading new practices across clinics found that formally appointed peer advocates in each role spread new processes well. Their biggest barrier was a lack of protected time to train peers.",
+          "Reviews of champions in health technology found that champions promote, teach, support users and connect developers with users. Changes that require people to work differently need more than one champion."
         ],
-        after: "Watching for unchecked approvals stays with the manager, so no nurse is asked to police peers."
+        after: "Monitoring for unchecked approvals is the manager's job. Champions are not asked to monitor their peers."
       }
     ],
     back: "Back to Your team"
