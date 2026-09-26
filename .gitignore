@@ -1,0 +1,8 @@
+brief.md
+*.pptx
+*.docx
+*.pdf
+notes/
+.DS_Store
+shots/
+node_modules/
