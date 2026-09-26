@@ -209,7 +209,7 @@ window.RCM_SCRIPT = {
     pick_label: "Role for {name}",
     roles_title: "The two roles",
     role_desc: {
-      agent: "Works with the team that builds the agent. Turns the nurses' edits into recommended fixes and tests new versions before they roll out.",
+      agent: "Works with the team that builds the agent. Turns the nurses' edits into recommended fixes, tests new versions before they roll out, and helps other nurses send useful feedback.",
       people: "Teaches other nurses to review the agent's drafts and leads a weekly huddle on difficult cases."
     },
     reason_label: "Why this role? One sentence.",
@@ -219,7 +219,7 @@ window.RCM_SCRIPT = {
 
     // Reveal
     right: {
-      b: "Nurse B's error reports are specific, and the agent's development team can act on them.",
+      b: "Nurse B's error reports are specific, and the agent's development team can act on them. As every nurse starts sending feedback, Nurse B can help the others make their reports just as useful.",
       c: "Other nurses already trust Nurse C with hard cases. As a former skeptic, they can speak to the doubts other nurses have."
     },
     wrong: {
@@ -250,6 +250,11 @@ window.RCM_SCRIPT = {
         { k: "On the dashboard",
           agent: "Visible: high edit rate, lots of feedback",
           people: "Not visible: ask who people go to with hard cases" }
+      ],
+      change_title: "With agents, the agent improvement champion's role changes over time",
+      change: [
+        { k: "During development", v: "A small group of champions gives feedback on the agent directly." },
+        { k: "After rollout", v: "The agent learns from every nurse's edits and feedback, so the champion's job shifts from giving feedback to helping other nurses give good feedback." }
       ]
     },
     closing: "For both champions, make the role formal, protect time for it, give them a direct line to you and the development team, and rotate the role over time. Nurse D is a candidate once coached. Nurse C is well placed to help bring Nurse E back to the agent.",

@@ -145,6 +145,12 @@
         el("h2", { text: S.fw.title })
       ]),
       el("div", { class: "enter", style: { "--i": 1 } }, [framework()]),
+      el("div", { class: "diff enter", style: { "--i": 2 } }, [
+        el("h3", { text: S.fw.change_title }),
+        el("dl", {}, S.fw.change.reduce(function (acc, row) {
+          return acc.concat([el("dt", { text: row.k }), el("dd", { text: row.v })]);
+        }, []))
+      ]),
       el("p", { class: "closing enter", style: { "--i": 2 }, text: S.closing }),
       el("div", { class: "panel-foot enter", style: { "--i": 3 } }, [
         score,
