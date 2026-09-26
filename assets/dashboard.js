@@ -4,7 +4,8 @@
   var RCM = window.RCM, L = window.RCM_LOGIC, UI = window.RCM_UI, S = window.RCM_SCRIPT.ex1;
   var el = UI.el, text = UI.text;
   var main = document.getElementById("main");
-  var metrics = ["letters", "quality", "edited", "notes"];
+  var metrics = ["letters", "quality", "used", "edited", "notes"];
+  var percent = { quality: true, used: true, edited: true };
   var picks, locked, rows, side;
 
   document.title = S.page_title;
@@ -15,7 +16,7 @@
 
   function metricCell(n, key) {
     var scale = RCM.scales[key];
-    var shown = key === "quality" || key === "edited" ? n[key] + "%" : String(n[key]);
+    var shown = percent[key] ? n[key] + "%" : String(n[key]);
     var tick = key === "letters" ? RCM.targets.letters : key === "quality" ? RCM.targets.quality : null;
     return el("td", { class: "cell-metric", "data-label": S.cols[key] }, [
       el("div", { class: "metric-val", text: shown }),
@@ -147,7 +148,6 @@
 
   function revealRows(results) {
     results.forEach(function (r, i) {
-      var n = UI.nurse(r.id);
       var tr = rows[r.id];
       var last = i === results.length - 1;
       var cell = tr.querySelector(".cell-call");
@@ -164,9 +164,7 @@
       var line = r.correct ? S.right[r.id] : S.wrong[r.id][r.picked];
       var reveal = el("tr", { class: "reveal-row" + (last ? " last" : "") }, [
         el("td", { colspan: String(metrics.length + 2) }, [
-          el("p", { class: "reveal-line enter" + (r.correct ? "" : " is-wrong"), style: { "--i": i } }, [
-            el("span", { class: "who", text: n.name + ". " }), line
-          ])
+          el("p", { class: "reveal-line enter", style: { "--i": i }, text: line })
         ])
       ]);
       tr.parentNode.insertBefore(reveal, tr.nextSibling);
@@ -177,9 +175,10 @@
     var fw = S.fw;
     function zone(id) {
       var z = fw.zones[id];
-      return el("div", { class: "zone zone-" + id }, [
+      var kind = id.indexOf("flag") === 0 ? "flag" : id;
+      return el("div", { class: "zone zone-" + kind + " zone-" + id }, [
         el("div", { class: "zone-text" }, [
-          el("div", { class: "zone-name word-" + id, text: UI.label(id).name }),
+          el("div", { class: "zone-name word-" + kind, text: z.label }),
           el("p", { class: "zone-def", text: z.def }),
           el("p", { class: "zone-resp", text: z.response })
         ])
@@ -197,7 +196,7 @@
       el("div", { class: "fw-yticks", "aria-hidden": "true" }, [
         el("span", { text: fw.high }), el("span", { text: fw.low })
       ]),
-      el("div", { class: "fw-plot" }, [zone("coach"), zone("champion"), zone("flag"), dots]),
+      el("div", { class: "fw-plot" }, RCM.zones.map(zone).concat([dots])),
       el("div", { class: "fw-xticks", "aria-hidden": "true" }, [
         el("span", { text: fw.low }), el("span", { text: fw.high })
       ]),
