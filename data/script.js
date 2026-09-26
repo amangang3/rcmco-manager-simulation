@@ -63,7 +63,7 @@ window.RCM_SCRIPT = {
   ex1: {
     page_title: "Your dashboard · The Manager's Monday",
     eyebrow: "You are the nurse manager · Monday morning",
-    task: "Make one call on each nurse: two Champions, one Coach and two Flags.",
+    task: "Make one call on each nurse: two Champions, two Coaches and two Flags.",
     table_label: "Your team's first full month",
     cols: {
       nurse: "Nurse",
@@ -86,7 +86,8 @@ window.RCM_SCRIPT = {
       b: "Logs agent errors in the feedback tool most days.",
       c: "Meets the target every day and reports anything that looks wrong.",
       d: "Rewrites most drafts from the beginning. Says they trust their own letters more.",
-      e: "Writes letters from scratch in a separate document. Says the agent does not know the payers."
+      e: "Writes letters from scratch in a separate document. Says the agent does not know the payers.",
+      f: "Reads the full patient record for every case before opening the agent's draft."
     },
 
     defs_title: "What each call means",
@@ -96,7 +97,7 @@ window.RCM_SCRIPT = {
       flag: "Is not checking the agent's drafts, or is not using the agent. You will step in."
     },
     counter_title: "Your calls",
-    counter_names: { champion: "Champions", coach: "Coach", flag: "Flags" },
+    counter_names: { champion: "Champions", coach: "Coaches", flag: "Flags" },
     counter_item: "{name} {count} of {quota}",
     counter_rule: "LOCK IN becomes available when every nurse has a call and the counts match.",
     lock: "LOCK IN",
@@ -107,7 +108,8 @@ window.RCM_SCRIPT = {
       b: "Nurse B is above target, edits about a third of the drafts and sends the most feedback on the team.",
       c: "Nurse C meets the target at the quality bar, edits 40% of drafts and reports errors every week.",
       d: "Nurse D uses every agent draft and then rewrites most of it, so their output is below target. They check closely. Show them which parts of the draft the agent gets right.",
-      e: "Nurse E starts only 8% of letters from the agent's draft and sends no feedback. Their output matches the old target of 4 letters a day. Ask why they avoid the agent before deciding what to do."
+      e: "Nurse E starts only 8% of letters from the agent's draft and sends no feedback. Their output matches the old target of 4 letters a day. Ask why they avoid the agent before deciding what to do.",
+      f: "Nurse F checks closely and sends useful feedback. They are just below target because they reread the full patient record before opening each draft. Show them how to check the agent's draft against the record without rereading all of it, and pair them with a champion."
     },
     wrong: {
       a: {
@@ -129,6 +131,10 @@ window.RCM_SCRIPT = {
       e: {
         champion: "Nurse E rarely uses the agent. Other nurses would take the role as permission to skip it.",
         coach: "Coaching assumes a nurse is working with the agent. Nurse E has mostly stopped using it. Find out why first."
+      },
+      f: {
+        champion: "Nurse F checks closely and sends useful feedback. They are still below target, so as a champion they would model a slower way of working than the team needs.",
+        flag: "Nurse F checks every case closely and reports errors. A flag would treat careful review as the problem. Nurse F needs help checking the agent's drafts more efficiently."
       }
     },
     your_call: "Your call: {call}",

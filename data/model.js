@@ -12,12 +12,13 @@ window.RCM = {
 
   targets: { letters: 7, quality: 95, lettersBefore: 4 },   // letters per day, quality score %; the target before the agent
 
-  // Five nurses. Each one sits clearly in one quadrant.
+  // Six nurses. Each one sits clearly in one quadrant.
   //   A: highest output, uses every draft, barely checks          -> flag (bottom right, looks like the star)
   //   B: above target, checks and reports a lot                   -> champion
   //   C: on target, checks closely, reports steadily              -> champion
   //   D: uses every draft, then rewrites most of it, below target -> coach
   //   E: rarely uses the agent, writes by hand at the old pace    -> flag (bottom left)
+  //   F: uses every draft, rereads the whole record first, just below target -> coach
   nurses: [
     { id: "a", name: "Nurse A", letters: 11, quality: 97, used: 100, edited: 2,  notes: 0,  answer: "flag",
       zone: "flag_high", plot: { x: 0.90, y: 0.12 } },
@@ -28,7 +29,9 @@ window.RCM = {
     { id: "d", name: "Nurse D", letters: 5,  quality: 97, used: 100, edited: 78, notes: 2,  answer: "coach",
       zone: "coach",     plot: { x: 0.24, y: 0.90 } },
     { id: "e", name: "Nurse E", letters: 4,  quality: 96, used: 8,   edited: 0,  notes: 0,  answer: "flag",
-      zone: "flag_low",  plot: { x: 0.18, y: 0.12 } }
+      zone: "flag_low",  plot: { x: 0.18, y: 0.12 } },
+    { id: "f", name: "Nurse F", letters: 6,  quality: 97, used: 100, edited: 25, notes: 5,  answer: "coach",
+      zone: "coach",     plot: { x: 0.42, y: 0.74 } }
   ],
   // used = % of letters that started from the agent's draft. edited = % of the drafts they used that they changed.
   // notes = feedback notes sent per week. zone = quadrant on the reveal grid.
@@ -49,7 +52,7 @@ window.RCM = {
 
   labels: [
     { id: "champion", name: "Champion", quota: 2 },
-    { id: "coach",    name: "Coach",    quota: 1 },
+    { id: "coach",    name: "Coach",    quota: 2 },
     { id: "flag",     name: "Flag",     quota: 2 }
   ],
 
