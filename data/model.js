@@ -12,22 +12,26 @@ window.RCM = {
 
   targets: { letters: 7, quality: 95, lettersBefore: 4 },   // letters per day, quality score %; the target before the agent
 
-  // The four nurses. Each differs from the others on one clear thing.
-  //   A: highest output, almost no checking            -> flag   (looks like the star)
-  //   B: above target, checks and reports a lot         -> champion
-  //   C: on target, checks carefully, reports steadily  -> champion
-  //   D: well below target, rewrites nearly everything  -> coach  (careful, not using the agent well)
+  // Five nurses. Each one sits clearly in one quadrant.
+  //   A: highest output, uses every draft, barely checks          -> flag (bottom right, looks like the star)
+  //   B: above target, checks and reports a lot                   -> champion
+  //   C: on target, checks closely, reports steadily              -> champion
+  //   D: uses every draft, then rewrites most of it, below target -> coach
+  //   E: rarely uses the agent, writes by hand at the old pace    -> flag (bottom left)
   nurses: [
-    { id: "a", name: "Nurse A", letters: 11, quality: 97, edited: 2,  notes: 0,  answer: "flag",
-      plot: { x: 0.92, y: 0.10 } },
-    { id: "b", name: "Nurse B", letters: 9,  quality: 97, edited: 35, notes: 12, answer: "champion",
-      plot: { x: 0.78, y: 0.80 } },
-    { id: "c", name: "Nurse C", letters: 7,  quality: 96, edited: 40, notes: 6,  answer: "champion",
-      plot: { x: 0.60, y: 0.84 } },
-    { id: "d", name: "Nurse D", letters: 4,  quality: 97, edited: 78, notes: 2,  answer: "coach",
-      plot: { x: 0.22, y: 0.92 } }
+    { id: "a", name: "Nurse A", letters: 11, quality: 97, used: 100, edited: 2,  notes: 0,  answer: "flag",
+      zone: "flag_high", plot: { x: 0.90, y: 0.12 } },
+    { id: "b", name: "Nurse B", letters: 9,  quality: 97, used: 100, edited: 35, notes: 12, answer: "champion",
+      zone: "champion",  plot: { x: 0.80, y: 0.80 } },
+    { id: "c", name: "Nurse C", letters: 7,  quality: 96, used: 100, edited: 40, notes: 6,  answer: "champion",
+      zone: "champion",  plot: { x: 0.62, y: 0.86 } },
+    { id: "d", name: "Nurse D", letters: 5,  quality: 97, used: 100, edited: 78, notes: 2,  answer: "coach",
+      zone: "coach",     plot: { x: 0.24, y: 0.90 } },
+    { id: "e", name: "Nurse E", letters: 4,  quality: 96, used: 8,   edited: 0,  notes: 0,  answer: "flag",
+      zone: "flag_low",  plot: { x: 0.18, y: 0.12 } }
   ],
-  // edited = % of agent drafts the nurse changed before sending. notes = feedback notes sent per week.
+  // used = % of letters that started from the agent's draft. edited = % of the drafts they used that they changed.
+  // notes = feedback notes sent per week. zone = quadrant on the reveal grid.
   // plot = position on the reveal grid, 0..1 (x = output, y = oversight). Stated, not computed, so it
   // cannot drift from the story.
 
@@ -35,21 +39,25 @@ window.RCM = {
   scales: {
     letters: { min: 0,  max: 12 },
     quality: { min: 80, max: 100 },
+    used:    { min: 0,  max: 100 },
     edited:  { min: 0,  max: 100 },
     notes:   { min: 0,  max: 12 }
   },
 
+  // Quadrants of the reveal grid, in reading order.
+  zones: ["coach", "champion", "flag_low", "flag_high"],
+
   labels: [
     { id: "champion", name: "Champion", quota: 2 },
     { id: "coach",    name: "Coach",    quota: 1 },
-    { id: "flag",     name: "Flag",     quota: 1 }
+    { id: "flag",     name: "Flag",     quota: 2 }
   ],
 
   // Exercise 2. The two champions carry over from exercise 1 (B and C) whatever a group picked there,
   // because exercise 1's reveal has already shown them.
   roles: [
-    { id: "agent",  name: "Agent-improvement champion", short: "Improves the agent" },
-    { id: "people", name: "Adoption champion",          short: "Improves the people" }
+    { id: "agent",  name: "Agent improvement champion", short: "Improves the agent" },
+    { id: "people", name: "Agent adoption champion",    short: "Improves its users" }
   ],
   champions: [
     { id: "b", answer: "agent"  },
