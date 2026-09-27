@@ -212,9 +212,9 @@ window.RCM_SCRIPT = {
       agent: "Works with the team that builds the agent. Turns the nurses' edits into recommended fixes, tests new versions before they roll out, and helps other nurses send useful feedback.",
       people: "Teaches other nurses to review the agent's drafts and leads a weekly huddle on difficult cases."
     },
-    reason_label: "Why this role? One sentence.",
+    reason_label: "Why this role? One sentence (optional).",
     reason_placeholder: "Example: They are right for this role because...",
-    rule: "Each champion takes one role. Choosing a role for one nurse assigns the other role to the other nurse. Write one sentence for each nurse on why the role fits, then lock in.",
+    rule: "Each champion takes one role. Choosing a role for one nurse assigns the other role to the other nurse. You can add one sentence for each nurse on why the role fits before you lock in.",
     lock: "LOCK IN",
 
     // Reveal

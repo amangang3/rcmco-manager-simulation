@@ -81,9 +81,6 @@ window.RCM_LOGIC = {
       ({ id: n.id, picked: picks[n.id], answer: n.answer, correct: picks[n.id] === n.answer })),
   // roles: { b: "agent", c: "people" }. The two must differ.
   valid2: roles => !!(roles.b && roles.c && roles.b !== roles.c),
-  // Roles are valid and each champion has a one-sentence reason (at least 15 characters once trimmed).
-  valid2Reasons: (roles, reasons) => window.RCM_LOGIC.valid2(roles)
-    && window.RCM.champions.every(c => ((reasons || {})[c.id] || "").trim().length >= 15),
   score2: roles => window.RCM.champions.map(c =>
       ({ id: c.id, picked: roles[c.id], answer: c.answer, correct: roles[c.id] === c.answer })),
   // Fill a {placeholder} template from an object.

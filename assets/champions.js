@@ -92,7 +92,7 @@
   }
 
   function update() {
-    document.getElementById("lock").disabled = !L.valid2Reasons(roles, reasons);
+    document.getElementById("lock").disabled = !L.valid2(roles);
   }
 
   function framework() {
@@ -114,26 +114,28 @@
   }
 
   function reveal() {
-    if (!L.valid2Reasons(roles, reasons) || locked) return;
+    if (!L.valid2(roles) || locked) return;
     locked = true;
     var results = L.score2(roles);
     var right = results.filter(function (r) { return r.correct; }).length;
 
     results.forEach(function (r, i) {
       var card = cards[r.id];
+      // The reason is optional: its quote and check prompt appear only when the group wrote one.
+      var reason = (reasons[r.id] || "").trim();
       Array.prototype.forEach.call(card.querySelectorAll(".opt, textarea"), function (b) { b.disabled = true; });
       card.appendChild(el("div", { class: "result enter", style: { "--i": i } }, [
         UI.mark(r.correct, S.mark_right, S.mark_wrong),
         el("div", { class: "result-body" }, [
-          el("p", { class: "your-reason" }, [
+          reason ? el("p", { class: "your-reason" }, [
             el("span", { class: "who", text: S.your_reason + " " }),
-            "\u201c" + reasons[r.id].trim() + "\u201d"
-          ]),
+            "\u201c" + reason + "\u201d"
+          ]) : null,
           el("p", { class: "reveal-line" }, [
             el("span", { class: "who", text: text(S.your_pick, { role: UI.role(r.picked).short }) + ". " }),
             r.correct ? S.right[r.id] : S.wrong[r.id]
           ]),
-          el("p", { class: "reason-check", text: S.reason_check[r.id] })
+          reason ? el("p", { class: "reason-check", text: S.reason_check[r.id] }) : null
         ])
       ]));
     });

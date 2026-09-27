@@ -62,9 +62,7 @@ targets in the model, lookups, and a tick/cross mark with a screen-reader label.
 - Bar scales (never shown as numbers), the four quadrant ids in reading order, the three labels with quotas
   (2 Champions, 2 Coaches, 2 Flags), the two champion roles (Agent improvement champion, Agent adoption
   champion), and the right role for B (improves the agent) and C (improves its users).
-- `window.RCM_LOGIC`: pure functions `quotaMet`, `counts`, `score1`, `valid2`, `valid2Reasons`, `score2`,
-  `fill`. `valid2Reasons` requires valid roles and a reason of at least 15 trimmed characters for each
-  champion.
+- `window.RCM_LOGIC`: pure functions `quotaMet`, `counts`, `score1`, `valid2`, `score2`, `fill`.
 
 No other numbers appear in the exercise: no money, revenue or pay.
 
@@ -88,15 +86,16 @@ No other numbers appear in the exercise: no money, revenue or pay.
 ## Exercise 2: Your champions
 
 - Two nurse cards (B and C). Each has the exercise 1 figures in small type, four evidence bullets and two role
-  buttons (Improves the agent, Improves its users) on the left, and a four-line reason box ("Why this role?
-  One sentence.", up to 200 characters) on the right. Choosing a role for one nurse assigns the other role to
+  buttons (Improves the agent, Improves its users) on the left, and a four-line optional reason box ("Why
+  this role? One sentence (optional).", up to 200 characters) on the right. Choosing a role for one nurse assigns the other role to
   the other nurse.
-- LOCK IN enables only when roles are chosen and both reasons hold at least 15 characters after trimming. The
-  rule under the role cards says so.
+- LOCK IN enables as soon as roles are chosen. The reasons are optional, and the rule under the role cards
+  says so.
 - Right panel before the reveal: the two role cards (plain name large, formal name small). The agent
   improvement card includes helping other nurses send useful feedback.
 - Reveal: the reason boxes are disabled. Each card shows a tick or cross, the group's own reason in quotation
-  marks, the right-role or swapped line, and a muted prompt asking whether the reason named what matters. The
+  marks if they wrote one, the right-role or swapped line, and, when there is a reason, a muted prompt asking
+  whether it named what matters. The
   right panel becomes the Framework 2 table (the job, pick someone who, on the dashboard), then a navy note on
   how the agent improvement champion's role changes over time (during development the champions give feedback
   directly; after rollout the agent learns from every nurse, so the champion helps others give good feedback),
@@ -142,12 +141,12 @@ No other numbers appear in the exercise: no money, revenue or pay.
    `node -e 'global.window=global;require("./data/model.js");require("./data/script.js");require("./assets/test.js");console.log(window.RCM_TEST_RESULTS.passed+"/"+window.RCM_TEST_RESULTS.total)'`.
    It enumerates every call assignment (exactly 90 valid, exactly one scores 6 of 6), checks every right-call
    line and all 12 consequence lines exist, checks all four quadrants and each nurse's quadrant, plot, floor
-   note, checks `valid2Reasons`, and scores both exercise 2 assignments.
+   note, and scores both exercise 2 assignments.
 2. **Content.** The contrast-framing grep
    (`grep -nE ", not |not just|rather than|instead of|isn't|doesn't have to|What's missing|The (problem|issue|point) is" data/script.js`)
    returns nothing. No gendered pronouns in `data/`, `assets/` or `*.html`; no digits in the page `.html` files;
    no em dashes in `data/`; framework wording matches the slides; no practice outside the list above appears.
-3. **Behavior.** LOCK IN gating on both exercises (including the reasons), every wrong line appearing on the
+3. **Behavior.** LOCK IN gating on both exercises (exercise 2 needs roles only), every wrong line appearing on the
    right nurse's row, Start over on both, three-step nav on every page,
    keyboard-only run including typing, reduced motion, two identical runs, and no network requests from
    `file://`.

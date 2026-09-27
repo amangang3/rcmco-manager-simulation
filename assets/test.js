@@ -62,13 +62,6 @@
   function count(r) { return r.filter(function (x) { return x.correct; }).length; }
   check("Exercise 2 right assignment scores 2 of 2", L.valid2(right2) && count(L.score2(right2)) === 2);
   check("Exercise 2 swapped assignment scores 0 of 2", L.valid2(swapped) && count(L.score2(swapped)) === 0);
-  var long = "Other nurses already trust them.", reasonsOk = { b: long, c: long };
-  check("valid2Reasons is true with valid roles and two long reasons", L.valid2Reasons(right2, reasonsOk));
-  check("valid2Reasons is false when a reason is missing", !L.valid2Reasons(right2, { b: long }) && !L.valid2Reasons(right2, {}) && !L.valid2Reasons(right2));
-  check("valid2Reasons is false when a trimmed reason is under 15 characters",
-    !L.valid2Reasons(right2, { b: long, c: "   fourteen chars   ".slice(0, 20) }) && !L.valid2Reasons(right2, { b: long, c: "12345678901234" })
-    && L.valid2Reasons(right2, { b: long, c: "  123456789012345  " }));
-  check("valid2Reasons is false when roles are invalid", !L.valid2Reasons({ b: "agent", c: "agent" }, reasonsOk));
   check("Every nurse has a floor line", RCM.nurses.every(function (n) { return !!S.ex1.floor[n.id]; }));
   check("Exercise 2 rejects matching or missing roles",
     !L.valid2({ b: "agent", c: "agent" }) && !L.valid2({ b: "agent" }) && !L.valid2({}));
