@@ -69,11 +69,7 @@
     !L.valid2Reasons(right2, { b: long, c: "   fourteen chars   ".slice(0, 20) }) && !L.valid2Reasons(right2, { b: long, c: "12345678901234" })
     && L.valid2Reasons(right2, { b: long, c: "  123456789012345  " }));
   check("valid2Reasons is false when roles are invalid", !L.valid2Reasons({ b: "agent", c: "agent" }, reasonsOk));
-  check("Every nurse has a floor line and a Next week reminder", RCM.nurses.every(function (n) {
-    return !!S.ex1.floor[n.id] && !!S.ex3.reminders[n.id];
-  }));
-  check("Next week has exactly four approaches, each with lead and text", S.ex3.approaches.length === 4 &&
-    S.ex3.approaches.every(function (a) { return !!a.lead && !!a.text; }));
+  check("Every nurse has a floor line", RCM.nurses.every(function (n) { return !!S.ex1.floor[n.id]; }));
   check("Exercise 2 rejects matching or missing roles",
     !L.valid2({ b: "agent", c: "agent" }) && !L.valid2({ b: "agent" }) && !L.valid2({}));
   RCM.champions.forEach(function (c) {

@@ -160,7 +160,6 @@
         score,
         el("p", { class: "end", text: S.end }),
         el("div", { class: "actions" }, [
-          el("a", { class: "btn", href: "followup.html", text: S.next }),
           el("a", { class: "link", href: "index.html", text: S.back }),
           el("button", { type: "button", class: "link", text: S.reset, on: { click: startOver } })
         ])

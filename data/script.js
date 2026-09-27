@@ -9,8 +9,7 @@ window.RCM_SCRIPT = {
     steps: [
       { n: 1, label: "Your team",      href: "index.html" },
       { n: 2, label: "Your dashboard", href: "dashboard.html" },
-      { n: 3, label: "Your champions", href: "champions.html" },
-      { n: 4, label: "Next week (optional)", href: "followup.html" }
+      { n: 3, label: "Your champions", href: "champions.html" }
     ],
     guide: "Facilitator guide",
     guide_href: "facilitate.html"
@@ -53,7 +52,7 @@ window.RCM_SCRIPT = {
           { text: "Select and assign your champions.",
             sub: "Choose the two nurses you want to rely on most heavily and assign each of them a role." }
         ],
-        after: "If your group has time, a short optional third question follows. Work in groups of three on one laptop."
+        after: "Work in groups of three on one laptop."
       }
     ],
     begin: "BEGIN",
@@ -259,43 +258,6 @@ window.RCM_SCRIPT = {
       ]
     },
     closing: "Name the part of the change each champion owns. Nurse B works directly with the agent's development team. Nurse C teaches the team and can help bring back Nurse E, who writes most letters without the agent. Nurses D and F, who are being coached, can learn from both.",
-    end: "If your group has time, continue to a short optional question about the rest of your team. Otherwise, this is the end of the exercise, and your faculty will bring the room back together.",
-    next: "OPTIONAL: NEXT WEEK",
-    back: "Back to Your team",
-    reset: "Start over"
-  },
-
-  // followup.html. Optional part 3. Nothing is scored, stored or sent.
-  ex3: {
-    page_title: "Next week · The Manager's Monday",
-    eyebrow: "Optional · You are the nurse manager · The following Monday",
-    task: "You have named two champions. How will you keep the rest of your team motivated?",
-    team_title: "Your team now",
-    reminders: {
-      a: "rarely checks the agent's drafts",
-      b: "your agent improvement champion",
-      c: "your agent adoption champion",
-      d: "rewrites most drafts from the beginning",
-      e: "writes most letters without the agent",
-      f: "rereads every patient record before opening the draft"
-    },
-    question: "Naming champions raises their standing on the team. Nurses D and F are being coached while two colleagues were chosen. What will you say or do this week so they stay motivated, and what about Nurses A and E?",
-    plan_label: "Your group's plan, in two or three sentences",
-    plan_placeholder: "This week, we will...",
-    show: "SHOW FOUR APPROACHES",
-    your_plan: "Your plan:",
-    approaches_title: "Four approaches to compare with your plan",
-    approaches: [
-      { lead: "Give more nurses a part of the change.",
-        text: "Name an owner for each part of the rollout. Each owner learns their part and teaches it to the rest of the team, so nobody feels left behind." },
-      { lead: "Be open about what you track.",
-        text: "Tell the team that you look at how each nurse changes the agent's drafts and why. Explain that you use it to improve the agent and to focus coaching." },
-      { lead: "Present the agent as taking over tedious work.",
-        text: "The time it saves goes to stronger arguments, deeper research and clinical judgment." },
-      { lead: "Make every nurse's feedback count.",
-        text: "After rollout, the agent improves from the whole team's edits and feedback. Careful review by any nurse, including those being coached, makes the agent better." }
-    ],
-    discuss: "Discuss: which of these would matter most to Nurse D and Nurse F? Which would matter most to Nurse E?",
     end: "This is the end of the exercise. Your faculty will bring the room back together.",
     back: "Back to Your team",
     reset: "Start over"
@@ -311,7 +273,7 @@ window.RCM_SCRIPT = {
       {
         eyebrow: "1 · The intro",
         heading: "Read this to the class. It takes about two minutes.",
-        quote: "For the next twenty minutes you are the nurse manager of a denial-appeals team at RCMco. The company has deployed an AI agent that drafts every appeal letter. Your nurses now review and correct those drafts, and their daily target has gone from four letters to seven at the same quality standard. It is Monday, and you have the first full month of performance data on six nurses. Get into groups of three with one laptop per group. First, decide how you will manage each nurse. Then choose what role to give your two champions. If you have time, there is a short third question about the rest of your team."
+        quote: "For the next twenty minutes you are the nurse manager of a denial-appeals team at RCMco. The company has deployed an AI agent that drafts every appeal letter. Your nurses now review and correct those drafts, and their daily target has gone from four letters to seven at the same quality standard. It is Monday, and you have the first full month of performance data on six nurses. Get into groups of three with one laptop per group. First, decide how you will manage each nurse. Then choose what role to give your two champions."
       },
       {
         eyebrow: "2 · How to run it",
@@ -321,7 +283,6 @@ window.RCM_SCRIPT = {
           { t: "1 min", v: "Form groups of three, one laptop each, open to Your team." },
           { t: "10 min", v: "Exercise 1: Your dashboard." },
           { t: "10 min", v: "Exercise 2: Your champions." },
-          { t: "5 min, optional", v: "Part 3: Next week. Skip it if time is short." },
           { t: "5 to 10 min", v: "Bring the room back together for the debrief." }
         ],
         tip_label: "If a group stalls on exercise 1, ask:",

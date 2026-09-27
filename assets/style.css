@@ -305,26 +305,7 @@ button { font: inherit; color: inherit; }
 .closing { font-size: 0.95rem; line-height: 1.4; }
 .end { font-weight: 600; color: var(--navy); font-size: 0.95rem; line-height: 1.4; }
 
-/* ---------- Part 3: next week ---------- */
-.split-38 { grid-template-columns: minmax(0, 38fr) minmax(0, 62fr); }
-.team { align-self: start; }
-.team-list { display: grid; }
-.team-list li {
-  display: grid; grid-template-columns: 5.2rem auto 1fr; align-items: baseline; gap: 0.2rem 0.7rem;
-  padding: 0.65rem 0; border-bottom: var(--hair);
-}
-.team-list li:last-child { border-bottom: 0; }
-.team-list .tag { justify-self: start; }
-.team-note { font-size: 0.9rem; color: var(--muted); line-height: 1.35; }
-.question { font-size: 1.1rem; line-height: 1.45; }
-.plan .reason textarea { font-size: 1rem; field-sizing: content; min-height: calc(4lh + 0.8rem); }
 .who { font-weight: 700; }
-.approaches { display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
-.approaches-title { font-size: 1.1rem; color: var(--navy); }
-.approach-list { list-style: decimal; padding-left: 1.3rem; display: grid; gap: 0.45rem; font-size: 0.95rem; line-height: 1.4; }
-.approach-list strong { color: var(--text); }
-.approaches .your-reason { font-size: 0.95rem; }
-.approaches .reason-check { font-size: 0.95rem; }
 
 /* ---------- Motion ---------- */
 @keyframes rise { from { opacity: 0; transform: translateY(0.4rem); } to { opacity: 1; transform: none; } }
@@ -345,7 +326,7 @@ button { font: inherit; color: inherit; }
   .ncard-body { grid-template-columns: minmax(0, 1fr); }
   .reason textarea { field-sizing: content; min-height: calc(4lh + 0.8rem); }
   .stage { padding: 1rem; }
-  .split-60, .split-55, .split-38 { grid-template-columns: minmax(0, 1fr); }
+  .split-60, .split-55 { grid-template-columns: minmax(0, 1fr); }
   .dash { padding: 0.8rem; overflow: visible; }
   .dash table, .dash thead, .dash tbody, .dash tr, .dash td, .dash tbody th { display: block; width: auto; }
   .dash thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
