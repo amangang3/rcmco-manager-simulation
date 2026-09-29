@@ -150,39 +150,39 @@ window.RCM_SCRIPT = {
       eyebrow: "Framework 1",
       title: "With agents, managers must measure oversight, in addition to output",
       x: "Output",
-      x_sub: "Volume and quality against the bar",
+      x_sub: "Productivity and quality",
       y: "Oversight",
       y_sub: "Edits, overrides and feedback",
       low: "Low",
       high: "High",
       zones: {
-        coach: {
-          label: "Coach",
+        learner: {
+          label: "Learner",
           def: "Reviews carefully, but not yet fully utilizing agent potential",
-          response: "Show them which parts of the draft the agent gets right, and pair them with a champion"
+          response: "Show them what the agent gets right, and teach them where to look hard"
         },
         champion: {
           label: "Champion",
           def: "Utilizes agent's potential and actively reviews agent output and improves it with feedback",
-          response: "Give them a champion role"
+          response: "Give them a formal role improving the agent or coaching peers"
         },
-        flag_low: {
-          label: "Flag",
+        resister: {
+          label: "Resister",
           def: "Not utilizing agent at all",
-          response: "Ask why, then show them the agent's letters next to the team's, and pair them with a champion"
+          response: "Ask what the agent gets wrong, put its draft next to their own letter, and pair them with a champion"
         },
-        flag_high: {
-          label: "Flag",
+        self_automator: {
+          label: "Self-Automator",
           def: "Utilizes agent's potential, but not checking the agent's work",
-          response: "Audit a sample of their letters, and make checking part of the job"
+          response: "Audit a sample of their letters, show them what they missed, make checking part of the job, and pair them with a champion"
         }
       },
       dot_label: "{name}: {zone}",
       box_title: "What is different with agents?",
       box: [
         { k: "Before agents", v: "The nurse wrote the letter. Output reflected their effort and judgment so output metrics were a good measure." },
-        { k: "With agents", v: "The agent writes the letter. The nurse's value is the review, and output measures alone don't reflect this." },
-        { k: "Key takeaway", v: "Measure oversight alongside output, or the highest approver looks like a high performer." }
+        { k: "With agents", v: "The agent writes the letter. The nurse's value is the review and edits, and output measures alone don't capture this." },
+        { k: "Key takeaway", v: "Measure oversight alongside output to see each nurse's type of adaptation, then tailor how you intervene." }
       ]
     }
   },
