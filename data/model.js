@@ -12,26 +12,26 @@ window.RCM = {
 
   targets: { letters: 7, quality: 95, lettersBefore: 4 },   // letters per day, quality score %; the target before the agent
 
-  // Six nurses. Each one sits clearly in one quadrant.
-  //   A: highest output, uses every draft, barely checks          -> flag (bottom right, looks like the star)
+  // Six nurses. Each one sits clearly in one quadrant, and each quadrant is one type of adaptation.
+  //   A: highest output, uses every draft, barely checks          -> self-automator (bottom right, looks like the star)
   //   B: above target, checks and reports a lot                   -> champion
   //   C: on target, checks closely, reports steadily              -> champion
-  //   D: uses every draft, then rewrites most of it, below target -> coach
-  //   E: rarely uses the agent, writes by hand at the old pace    -> flag (bottom left)
-  //   F: uses every draft, rereads the whole record first, just below target -> coach
+  //   D: uses every draft, then rewrites most of it, below target -> learner
+  //   E: rarely uses the agent, writes by hand at the old pace    -> resister (bottom left)
+  //   F: uses every draft, rereads the whole record first, just below target -> learner
   nurses: [
-    { id: "a", name: "Nurse A", letters: 11, quality: 97, used: 100, edited: 2,  notes: 0,  answer: "flag",
-      zone: "flag_high", plot: { x: 0.90, y: 0.12 } },
+    { id: "a", name: "Nurse A", letters: 11, quality: 97, used: 100, edited: 2,  notes: 0,  answer: "self_automator",
+      zone: "self_automator", plot: { x: 0.90, y: 0.12 } },
     { id: "b", name: "Nurse B", letters: 9,  quality: 97, used: 100, edited: 35, notes: 12, answer: "champion",
-      zone: "champion",  plot: { x: 0.80, y: 0.80 } },
+      zone: "champion",       plot: { x: 0.80, y: 0.80 } },
     { id: "c", name: "Nurse C", letters: 7,  quality: 96, used: 100, edited: 40, notes: 6,  answer: "champion",
-      zone: "champion",  plot: { x: 0.62, y: 0.86 } },
-    { id: "d", name: "Nurse D", letters: 5,  quality: 97, used: 100, edited: 78, notes: 2,  answer: "coach",
-      zone: "coach",     plot: { x: 0.24, y: 0.90 } },
-    { id: "e", name: "Nurse E", letters: 4,  quality: 96, used: 8,   edited: 0,  notes: 0,  answer: "flag",
-      zone: "flag_low",  plot: { x: 0.18, y: 0.12 } },
-    { id: "f", name: "Nurse F", letters: 6,  quality: 97, used: 100, edited: 25, notes: 5,  answer: "coach",
-      zone: "coach",     plot: { x: 0.42, y: 0.74 } }
+      zone: "champion",       plot: { x: 0.62, y: 0.86 } },
+    { id: "d", name: "Nurse D", letters: 5,  quality: 97, used: 100, edited: 78, notes: 2,  answer: "learner",
+      zone: "learner",        plot: { x: 0.24, y: 0.90 } },
+    { id: "e", name: "Nurse E", letters: 4,  quality: 96, used: 8,   edited: 0,  notes: 0,  answer: "resister",
+      zone: "resister",       plot: { x: 0.18, y: 0.12 } },
+    { id: "f", name: "Nurse F", letters: 6,  quality: 97, used: 100, edited: 25, notes: 5,  answer: "learner",
+      zone: "learner",        plot: { x: 0.42, y: 0.74 } }
   ],
   // used = % of letters that started from the agent's draft. edited = % of the drafts they used that they changed.
   // notes = feedback notes sent per week. zone = quadrant on the reveal grid.
@@ -48,12 +48,13 @@ window.RCM = {
   },
 
   // Quadrants of the reveal grid, in reading order.
-  zones: ["coach", "champion", "flag_low", "flag_high"],
+  zones: ["learner", "champion", "resister", "self_automator"],
 
   labels: [
-    { id: "champion", name: "Champion", quota: 2 },
-    { id: "coach",    name: "Coach",    quota: 2 },
-    { id: "flag",     name: "Flag",     quota: 2 }
+    { id: "champion",       name: "Champion",       quota: 2 },
+    { id: "learner",        name: "Learner",        quota: 2 },
+    { id: "resister",       name: "Resister",       quota: 1 },
+    { id: "self_automator", name: "Self-Automator", quota: 1 }
   ],
 
   // Exercise 2. The two champions carry over from exercise 1 (B and C) whatever a group picked there,
@@ -70,7 +71,7 @@ window.RCM = {
 
 // Pure functions. No side effects, no DOM.
 window.RCM_LOGIC = {
-  // picks: { a: "flag", b: "champion", ... }
+  // picks: { a: "self_automator", b: "champion", ... }
   quotaMet: picks => window.RCM.labels.every(l =>
       Object.values(picks).filter(p => p === l.id).length === l.quota)
     && Object.keys(picks).length === window.RCM.nurses.length,

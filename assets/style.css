@@ -1,5 +1,6 @@
 /* The Manager's Monday. All styling.
-   Sharp, calm, high contrast. One accent per meaning: navy = Champion, orange = Coach, red = Flag.
+   Sharp, calm, high contrast. One accent per meaning: navy = Champion, orange = Learner, red = Resister,
+   plum = Self-Automator.
    Every size is in rem. Documents scale with width; the two exercise pages (html.fit) follow
    whichever of width or height is tighter, so they fit one screen. */
 
@@ -9,6 +10,7 @@
   --navy: #0B2545;
   --orange: #E8830C; --orange-text: #A85C00;
   --red: #B23A2E;  --red-tint: #FBECEA;
+  --plum: #6E3A7E;
   --ok: #0C8F6E;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --radius: 6px; --hair: 0.75px solid var(--hairline);
@@ -142,11 +144,13 @@ button { font: inherit; color: inherit; }
   font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap;
 }
 .tag-champion { background: var(--navy); color: #fff; }
-.tag-coach { background: var(--orange); color: var(--text); }
-.tag-flag { background: var(--red); color: #fff; }
+.tag-learner { background: var(--orange); color: var(--text); }
+.tag-resister { background: var(--red); color: #fff; }
+.tag-self_automator { background: var(--plum); color: #fff; }
 .word-champion { color: var(--navy); }
-.word-coach { color: var(--orange-text); }
-.word-flag { color: var(--red); }
+.word-learner { color: var(--orange-text); }
+.word-resister { color: var(--red); }
+.word-self_automator { color: var(--plum); }
 
 /* ---------- Exercise 1: dashboard ---------- */
 .dash { padding: 0.8rem 1.1rem 0.4rem; }
@@ -172,16 +176,18 @@ button { font: inherit; color: inherit; }
 .bar-fill { position: absolute; inset: 0 auto 0 0; background: var(--bar); border-radius: 0.2rem; }
 .bar-tick { position: absolute; top: -0.25rem; bottom: -0.25rem; width: 0.14rem; margin-left: -0.07rem; background: var(--text); }
 
-.pills { display: flex; flex-wrap: nowrap; gap: 0.35rem; }
+.pills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 .pill {
-  padding: 0.4rem 0.7rem; border: 0.75px solid var(--dim); border-radius: 1rem; background: var(--surface);
-  font-size: 0.88rem; font-weight: 600; cursor: pointer; line-height: 1.2; color: var(--text);
+  padding: 0.35rem 0.6rem; border: 0.75px solid var(--dim); border-radius: 1rem; background: var(--surface);
+  font-size: 0.82rem; font-weight: 600; cursor: pointer; line-height: 1.2; color: var(--text);
+  white-space: nowrap;
   transition: background-color 200ms ease-out, color 200ms ease-out, border-color 200ms ease-out;
 }
 .pill:hover { border-color: var(--text); }
 .pill[aria-pressed="true"].pill-champion { background: var(--navy); border-color: var(--navy); color: #fff; }
-.pill[aria-pressed="true"].pill-coach { background: var(--orange); border-color: var(--orange); color: var(--text); }
-.pill[aria-pressed="true"].pill-flag { background: var(--red); border-color: var(--red); color: #fff; }
+.pill[aria-pressed="true"].pill-learner { background: var(--orange); border-color: var(--orange); color: var(--text); }
+.pill[aria-pressed="true"].pill-resister { background: var(--red); border-color: var(--red); color: #fff; }
+.pill[aria-pressed="true"].pill-self_automator { background: var(--plum); border-color: var(--plum); color: #fff; }
 
 .result { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.6rem; }
 .mark { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.88rem; color: var(--muted); }
@@ -225,8 +231,8 @@ button { font: inherit; color: inherit; }
   position: relative; border: var(--hair); border-color: #C9D1DD; border-radius: 0.2rem; background: var(--surface);
   padding: 0.4rem 0.5rem; display: flex; flex-direction: column; justify-content: flex-end; gap: 0.15rem;
 }
-.zone-flag { background: var(--red-tint); border-color: #EDCBC6; justify-content: flex-start; }
-.zone-coach .zone-text { max-width: 72%; }
+.zone-resister, .zone-self_automator { background: var(--red-tint); border-color: #EDCBC6; justify-content: flex-start; }
+.zone-learner .zone-text { max-width: 72%; }
 .zone-name { font-weight: 800; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .zone-def { font-size: 0.7rem; line-height: 1.25; color: var(--text); }
 .zone-resp { font-size: 0.7rem; line-height: 1.25; color: var(--muted); }
@@ -244,8 +250,9 @@ button { font: inherit; color: inherit; }
   border: 0.14rem solid var(--surface);
 }
 .dot-champion { background: var(--navy); }
-.dot-coach { background: var(--orange); color: var(--text); }
-.dot-flag { background: var(--red); }
+.dot-learner { background: var(--orange); color: var(--text); }
+.dot-resister { background: var(--red); }
+.dot-self_automator { background: var(--plum); }
 
 .diff { background: var(--navy); color: #fff; border-radius: var(--radius); padding: 0.65rem 0.9rem; }
 .diff h3 { font-size: 0.85rem; margin-bottom: 0.35rem; }

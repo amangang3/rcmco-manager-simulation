@@ -63,7 +63,7 @@ window.RCM_SCRIPT = {
   ex1: {
     page_title: "Your dashboard · The Manager's Monday",
     eyebrow: "You are the nurse manager · Monday morning",
-    task: "Make one call on each nurse: two Champions, two Coaches and two Flags.",
+    task: "Make one call on each nurse: two Champions, two Learners, one Resister and one Self-Automator.",
     table_label: "Your team's first full month",
     cols: {
       nurse: "Nurse",
@@ -92,12 +92,13 @@ window.RCM_SCRIPT = {
 
     defs_title: "What each call means",
     defs: {
-      champion: "Uses the agent's drafts, checks them closely and reports errors. You will give them a champion role.",
-      coach: "Checks the agent's drafts closely and is still learning to get full value from them. You will help them build that skill.",
-      flag: "Is not checking the agent's drafts, or is not using the agent. You will step in."
+      champion: "Uses the agent's drafts, checks them closely and reports errors. You will give them a formal role.",
+      learner: "Checks the agent's drafts closely and is still learning to get full value from them. You will help them build that skill.",
+      resister: "Rarely uses the agent. You will find out why and bring them in.",
+      self_automator: "Relies on the agent's drafts and rarely checks them. You will step in."
     },
     counter_title: "Your calls",
-    counter_names: { champion: "Champions", coach: "Coaches", flag: "Flags" },
+    counter_names: { champion: "Champions", learner: "Learners", resister: "Resister", self_automator: "Self-Automator" },
     counter_item: "{name} {count} of {quota}",
     counter_rule: "LOCK IN becomes available when every nurse has a call and the counts match.",
     lock: "LOCK IN",

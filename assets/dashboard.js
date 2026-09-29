@@ -175,10 +175,9 @@
     var fw = S.fw;
     function zone(id) {
       var z = fw.zones[id];
-      var kind = id.indexOf("flag") === 0 ? "flag" : id;
-      return el("div", { class: "zone zone-" + kind + " zone-" + id }, [
+      return el("div", { class: "zone zone-" + id }, [
         el("div", { class: "zone-text" }, [
-          el("div", { class: "zone-name word-" + kind, text: z.label }),
+          el("div", { class: "zone-name word-" + id, text: z.label }),
           el("p", { class: "zone-def", text: z.def }),
           el("p", { class: "zone-resp", text: z.response })
         ])
