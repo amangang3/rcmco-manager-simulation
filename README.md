@@ -14,7 +14,7 @@ improve those drafts. The manager has one month of dashboard data on six nurses 
 |---|---|
 | 2 min | Faculty reads the intro from the facilitator guide. |
 | 1 min | The room forms groups of three, one laptop per group. |
-| 10 min | Exercise 1, **Your dashboard**: make one call on each nurse (two Champions, two Coaches and two Flags). |
+| 10 min | Exercise 1, **Your dashboard**: make one call on each nurse (two Champions, two Learners, one Resister and one Self-Automator). |
 | 10 min | Exercise 2, **Your champions**: give each champion one role, with a one-sentence reason for each. |
 | 5 to 10 min | The room reconvenes for the debrief. |
 

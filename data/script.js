@@ -115,27 +115,33 @@ window.RCM_SCRIPT = {
     wrong: {
       a: {
         champion: "The team would copy Nurse A's habits. Edit rates would fall across the team, and letters built on the wrong criteria would start to go out.",
-        coach: "Coaching would focus on skill with the agent, and Nurse A already gets high output from it. They rarely check its drafts, which calls for an audit."
+        learner: "A learner plan would build skill with the agent, and Nurse A already gets high output from it. They rarely check its drafts, which calls for an audit.",
+        resister: "Nurse A uses the agent on every letter and rarely checks its drafts. A conversation about why they avoid the agent would miss what is happening."
       },
       b: {
-        coach: "Nurse B is above target and reviews closely. Coaching would use your time where it is not needed and tell your strongest reviewer they are behind.",
-        flag: "Nurse B edits drafts and reports errors, which is the behavior you want. A flag would teach the team to stop correcting drafts."
+        learner: "Nurse B is above target and reviews closely. A learner plan would use your time where it is not needed and tell your strongest reviewer they are behind.",
+        resister: "Nurse B uses the agent on every letter and reports its errors. Treating them as resistant would discourage the feedback you want.",
+        self_automator: "Nurse B edits a third of the drafts and reports errors. An audit would teach the team to stop correcting drafts."
       },
       c: {
-        coach: "Nurse C meets the target at the quality bar and reviews closely. Coaching would use your time where it is not needed, and you would lose a champion.",
-        flag: "Nurse C checks every draft they use and reports errors. A flag would tell the team that careful review gets people in trouble."
+        learner: "Nurse C meets the target at the quality bar and reviews closely. A learner plan would use your time where it is not needed, and you would lose a champion.",
+        resister: "Nurse C uses the agent on every letter and checks each draft. Treating them as resistant would overlook one of your most careful reviewers.",
+        self_automator: "Nurse C checks every draft they use and reports errors. An audit would tell the team that careful review gets people in trouble."
       },
       d: {
         champion: "The team would copy Nurse D's habit of rewriting drafts from the beginning. Output would drop, and the agent would look unhelpful.",
-        flag: "Nurse D uses the agent on every letter and checks each draft closely. An audit would signal that careful review is a problem. Nurse D needs help working faster with the agent."
+        resister: "Nurse D uses the agent on every letter and then rewrites most of it. They are willing to use the agent and need to learn where it is reliable.",
+        self_automator: "Nurse D checks each draft closely. An audit would signal that careful review is a problem. Nurse D needs help working faster with the agent."
       },
       e: {
         champion: "Nurse E rarely uses the agent. Other nurses would take the role as permission to skip it.",
-        coach: "Coaching assumes a nurse is working with the agent. Nurse E has mostly stopped using it. Find out why first."
+        learner: "A learner plan assumes a nurse is working with the agent. Nurse E has mostly stopped using it. Find out why first.",
+        self_automator: "Nurse E rarely uses the agent, so there is little agent work to audit. Start by finding out why they avoid it."
       },
       f: {
         champion: "Nurse F checks closely and sends useful feedback. They are still below target, so as a champion they would model a slower way of working than the team needs.",
-        flag: "Nurse F checks every case closely and reports errors. A flag would treat careful review as the problem. Nurse F needs help checking the agent's drafts more efficiently."
+        resister: "Nurse F uses the agent on every letter and sends useful feedback. They trust it enough to use it and need to learn to check it faster.",
+        self_automator: "Nurse F checks every case closely and reports errors. An audit would treat careful review as the problem. Nurse F needs help checking the agent's drafts more efficiently."
       }
     },
     your_call: "Your call: {call}",
@@ -258,7 +264,7 @@ window.RCM_SCRIPT = {
         { k: "After rollout", v: "The agent learns from every nurse's edits and feedback, so the champion's job shifts from giving feedback to helping other nurses give good feedback." }
       ]
     },
-    closing: "Name the part of the change each champion owns. Nurse B works directly with the agent's development team. Nurse C teaches the team and can help bring back Nurse E, who writes most letters without the agent. Nurses D and F, who are being coached, can learn from both.",
+    closing: "Name the part of the change each champion owns. Nurse B works directly with the agent's development team. Nurse C teaches the team and can help bring back Nurse E, the resister, who writes most letters without the agent. Nurses D and F, your two learners, can learn from both.",
     end: "This is the end of the exercise. Your faculty will bring the room back together.",
     back: "Back to Your team",
     reset: "Start over"
@@ -297,8 +303,8 @@ window.RCM_SCRIPT = {
           "Which nurse did your group first want as a champion, and what changed your mind?",
           "If your dashboard could show only two columns, which two would you keep?",
           "What would happen to the team if Nurse A became the example others followed?",
-          "Nurses A and E both got a Flag. How would you handle each of them?",
-          "Nurses D and F both need coaching. What does each of them need to learn?",
+          "Nurse A is a Self-Automator and Nurse E is a Resister. How would you handle each of them?",
+          "Nurses D and F are both Learners. What does each of them need to learn?",
           "What reason did your group give for Nurse C's role? Did it mention how other nurses see them?",
           "A year after rollout, the agent learns from every nurse's feedback. How should the agent improvement champion spend their time then?",
           "The case asked whether nurses should get a bonus for output. What does this exercise suggest? Leave the question open. The class has already debated it."
