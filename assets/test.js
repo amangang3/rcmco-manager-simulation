@@ -20,7 +20,7 @@
   })(0, {});
 
   var valid = all.filter(L.quotaMet);
-  check("Exactly 90 valid call assignments (found " + valid.length + ")", valid.length === 90);
+  check("Exactly 180 valid call assignments (found " + valid.length + ")", valid.length === 180);
   var perfect = valid.filter(function (p) {
     return L.score1(p).every(function (r) { return r.correct; });
   });
@@ -29,7 +29,8 @@
   var invalidOk = all.filter(function (p) {
     var c = {};
     Object.keys(p).forEach(function (k) { c[p[k]] = (c[p[k]] || 0) + 1; });
-    var isValid = Object.keys(p).length === 6 && c.champion === 2 && c.coach === 2 && c.flag === 2;
+    var isValid = Object.keys(p).length === 6 && c.champion === 2 && c.learner === 2 &&
+      c.resister === 1 && c.self_automator === 1;
     return !isValid && L.quotaMet(p);
   });
   check("quotaMet is false for every invalid assignment (" + (all.length - valid.length) + " checked)", invalidOk.length === 0);
@@ -48,14 +49,19 @@
   });
   var wrongCount = 0;
   Object.keys(S.ex1.wrong).forEach(function (id) { wrongCount += Object.keys(S.ex1.wrong[id]).length; });
-  check("Exactly 12 consequence lines (found " + wrongCount + ")", wrongCount === 12);
+  check("Exactly 18 consequence lines (found " + wrongCount + ")", wrongCount === 18);
+  check("Every nurse has exactly three consequence lines", RCM.nurses.every(function (n) {
+    var keys = Object.keys(S.ex1.wrong[n.id]).sort();
+    var want = labelIds.filter(function (l) { return l !== n.answer; }).sort();
+    return keys.length === 3 && keys.join(",") === want.join(",");
+  }));
   labelIds.forEach(function (l) {
     check("Definition and counter name for " + l, !!S.ex1.defs[l] && !!S.ex1.counter_names[l]);
   });
   check("Four framework zones, each with label, definition and response", RCM.zones.length === 4 &&
     RCM.zones.every(function (z) { var x = S.ex1.fw.zones[z]; return x && x.label && x.def && x.response; }));
   check("Every nurse has a zone that exists and matches their call", RCM.nurses.every(function (n) {
-    return RCM.zones.indexOf(n.zone) !== -1 && n.zone.indexOf(n.answer) === 0;
+    return RCM.zones.indexOf(n.zone) !== -1 && n.zone === n.answer;
   }));
 
   var right2 = { b: "agent", c: "people" }, swapped = { b: "people", c: "agent" };
@@ -70,7 +76,9 @@
       !!S.ex2.right[c.id] && !!S.ex2.wrong[c.id] && S.ex2.bullets[c.id].length === 4);
   });
 
-  var quadrant = { coach: [false, true], champion: [true, true], flag_low: [false, false], flag_high: [true, false] };
+  var quadrant = {
+    learner: [false, true], champion: [true, true], resister: [false, false], self_automator: [true, false]
+  };
   check("Plot positions sit in their quadrants", RCM.nurses.every(function (n) {
     var q = quadrant[n.zone];
     return (n.plot.x >= 0.5) === q[0] && (n.plot.y >= 0.5) === q[1];
