@@ -72,8 +72,8 @@ No other numbers appear in the exercise: no money, revenue or pay.
   quality score (bar with a bar tick), uses the agent's draft, drafts they edit, feedback notes per week. Bars
   are one neutral color. Nothing is colored good or bad before the reveal. Each name carries one plain floor
   note.
-- Each row has four pill buttons (Champion, Learner, Resister, Self-Automator), `aria-pressed`, one call per
-  nurse.
+- Each row has four pill buttons (Champion, Learner, Resister, Self-Automator) in a 2x2 block,
+  `aria-pressed`, one call per nurse.
 - Right panel: plain-word definitions of the four calls, a live counter, the quota rule, and LOCK IN, which
   enables only at exactly 2 Champions, 2 Learners, 1 Resister and 1 Self-Automator.
 - Reveal (no undo): each row shows the right call as a colored tag with its word, a tick or cross against the
