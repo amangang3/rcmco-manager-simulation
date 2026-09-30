@@ -271,7 +271,7 @@ window.RCM_SCRIPT = {
   guide: {
     page_title: "Facilitator guide · The Manager's Monday",
     eyebrow: "Facilitator guide",
-    title: "Run it in about twenty-five minutes, in groups of three",
+    title: "Run it in about twenty minutes, in groups of three",
     lede: "Everyone plays the same nurse manager. The reveal screens show both frameworks, so this guide covers the intro, the timing and the debrief.",
     sections: [
       {
@@ -286,7 +286,7 @@ window.RCM_SCRIPT = {
           { t: "2 min", v: "Give the intro." },
           { t: "1 min", v: "Form groups of three, one laptop each, open to Your team." },
           { t: "10 min", v: "Exercise 1: Your dashboard." },
-          { t: "10 min", v: "Exercise 2: Your champions." },
+          { t: "5 min", v: "Exercise 2: Your champions." },
           { t: "5 to 10 min", v: "Bring the room back together for the debrief." }
         ],
         tip_label: "If a group stalls on exercise 1, ask:",
@@ -297,6 +297,7 @@ window.RCM_SCRIPT = {
         eyebrow: "3 · Debrief",
         heading: "Questions for the room.",
         questions: [
+          "What intervention did your group write for each of the four types? Where did your group disagree?",
           "Which nurse did your group first want as a champion, and what changed your mind?",
           "If your dashboard could show only two columns, which two would you keep?",
           "What would happen to the team if Nurse A became the example others followed?",

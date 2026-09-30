@@ -58,8 +58,11 @@
   labelIds.forEach(function (l) {
     check("Definition and counter name for " + l, !!S.ex1.defs[l] && !!S.ex1.counter_names[l]);
   });
-  check("Four framework zones, each with label, definition and response", RCM.zones.length === 4 &&
-    RCM.zones.every(function (z) { var x = S.ex1.fw.zones[z]; return x && x.label && x.def && x.response; }));
+  check("Four framework zones, each with label and definition only", RCM.zones.length === 4 &&
+    RCM.zones.every(function (z) { var x = S.ex1.fw.zones[z]; return x && x.label && x.def && !("response" in x); }));
+  check("Framework 1 has the intervention label, placeholder and discussion prompt",
+    !!S.ex1.fw.intervention_label && !!S.ex1.fw.intervention_placeholder && !!S.ex1.fw.discuss);
+  check("Exercise 1 score line and exercise 2 closing are gone", !("score" in S.ex1) && !("closing" in S.ex2));
   check("Every nurse has a zone that exists and matches their call", RCM.nurses.every(function (n) {
     return RCM.zones.indexOf(n.zone) !== -1 && n.zone === n.answer;
   }));
