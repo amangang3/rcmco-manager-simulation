@@ -196,7 +196,12 @@
       }, [el("span", { "aria-hidden": "true", text: n.id.toUpperCase() })]);
     }));
     return el("div", { class: "fw enter", style: { "--i": 0 } }, [
-      el("div", { class: "fw-ylabel" }, [fw.y, " ", el("small", { text: fw.y_sub })]),
+      el("div", { class: "fw-ylabel" }, [
+        el("div", { class: "fw-ylabel-in" }, [
+          el("span", { class: "fw-ylabel-main", text: fw.y }),
+          el("span", { class: "fw-ylabel-sub", text: fw.y_sub })
+        ])
+      ]),
       el("div", { class: "fw-yticks", "aria-hidden": "true" }, [
         el("span", { text: fw.high }), el("span", { text: fw.low })
       ]),

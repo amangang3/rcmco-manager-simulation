@@ -216,11 +216,16 @@ button { font: inherit; color: inherit; }
 .split-55 .fw-head h2 { font-size: 1.35rem; }
 .quote { margin: 0; }
 .fw { display: grid; grid-template-columns: 1.4rem 1.6rem 1fr; grid-template-rows: 1fr auto auto; gap: 0; flex: 1; min-height: 20rem; }
-.fw-ylabel {
-  grid-row: 1; grid-column: 1; writing-mode: vertical-rl; transform: rotate(180deg);
-  text-align: center; font-size: 0.78rem; font-weight: 700; color: var(--text);
+/* Rotated as a plain horizontal block. writing-mode left a stray dot in Safari. */
+.fw-ylabel { grid-row: 1; grid-column: 1; position: relative; overflow: visible; }
+.fw-ylabel-in {
+  position: absolute; left: 50%; top: 50%; width: 20rem; transform: translate(-50%, -50%) rotate(-90deg);
+  display: flex; justify-content: center; align-items: baseline; gap: 0.3em;
+  font-size: 0.78rem; line-height: 1.2; white-space: nowrap; color: var(--text);
+  border: 0; outline: 0; list-style: none;
 }
-.fw-ylabel small { font-weight: 500; color: var(--dim); }
+.fw-ylabel-main { font-weight: 700; }
+.fw-ylabel-sub { font-weight: 500; font-size: smaller; color: var(--dim); }
 .fw-yticks {
   grid-row: 1; grid-column: 2; display: flex; flex-direction: column; justify-content: space-between;
   font-size: 0.68rem; color: var(--dim); padding: 0.2rem 0.3rem 0.2rem 0; text-align: right;
