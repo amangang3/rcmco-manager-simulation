@@ -175,11 +175,16 @@
     var fw = S.fw;
     function zone(id) {
       var z = fw.zones[id];
+      // The group writes its own intervention here. Nothing is scored, stored or sent.
       return el("div", { class: "zone zone-" + id }, [
         el("div", { class: "zone-text" }, [
           el("div", { class: "zone-name word-" + id, text: z.label }),
           el("p", { class: "zone-def", text: z.def }),
-          el("p", { class: "zone-resp", text: z.response })
+          el("textarea", {
+            class: "zone-input", rows: "2", maxlength: "160",
+            placeholder: fw.intervention_placeholder,
+            "aria-label": text(fw.intervention_label, { type: z.label })
+          })
         ])
       ]);
     }

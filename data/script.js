@@ -92,10 +92,10 @@ window.RCM_SCRIPT = {
 
     defs_title: "What each call means",
     defs: {
-      champion: "Uses the agent's drafts, checks them closely and reports errors. You will give them a formal role.",
-      learner: "Checks the agent's drafts closely and is still learning to get full value from them. You will help them build that skill.",
-      resister: "Rarely uses the agent. You will find out why and bring them in.",
-      self_automator: "Relies on the agent's drafts and rarely checks them. You will step in."
+      champion: "Uses the agent's drafts, checks them closely and reports errors.",
+      learner: "Checks the agent's drafts closely and is still learning to get full value from them.",
+      resister: "Rarely uses the agent.",
+      self_automator: "Relies on the agent's drafts and rarely checks them."
     },
     counter_title: "Your calls",
     counter_names: { champion: "Champions", learner: "Learners", resister: "Resister", self_automator: "Self-Automator" },
@@ -108,45 +108,46 @@ window.RCM_SCRIPT = {
       a: "Nurse A has the highest output on the team. They edit 2% of drafts and send no feedback, so the agent's letters go out largely unchecked. Their quality score is high because the scorer checks each letter against the criteria, and a clean agent draft passes. The scorer does not catch unusual cases that need a nurse's judgment.",
       b: "Nurse B is above target, edits about a third of the drafts and sends the most feedback on the team.",
       c: "Nurse C meets the target at the quality bar, edits 40% of drafts and reports errors every week.",
-      d: "Nurse D uses every agent draft and then rewrites most of it, so their output is below target. They check closely. Show them which parts of the draft the agent gets right.",
-      e: "Nurse E starts only 8% of letters from the agent's draft and sends no feedback. Their output matches the old target of 4 letters a day. Ask why they avoid the agent before deciding what to do.",
-      f: "Nurse F checks closely and sends useful feedback. They are just below target because they reread the full patient record before opening each draft. Show them how to check the agent's draft against the record without rereading all of it, and pair them with a champion."
+      d: "Nurse D uses every agent draft and then rewrites most of it, so their output is below target. They check closely.",
+      e: "Nurse E starts only 8% of letters from the agent's draft and sends no feedback. Their output matches the old target of 4 letters a day.",
+      f: "Nurse F checks closely and sends useful feedback. They are just below target because they reread the full patient record before opening each draft."
     },
     wrong: {
       a: {
         champion: "The team would copy Nurse A's habits. Edit rates would fall across the team, and letters built on the wrong criteria would start to go out.",
-        learner: "A learner plan would build skill with the agent, and Nurse A already gets high output from it. They rarely check its drafts, which calls for an audit.",
-        resister: "Nurse A uses the agent on every letter and rarely checks its drafts. A conversation about why they avoid the agent would miss what is happening."
+        learner: "Nurse A already gets high output from the agent. A Learner checks closely and works slowly, and Nurse A rarely checks at all.",
+        resister: "Nurse A uses the agent on every letter. A Resister avoids the agent, and Nurse A relies on it without checking."
       },
       b: {
-        learner: "Nurse B is above target and reviews closely. A learner plan would use your time where it is not needed and tell your strongest reviewer they are behind.",
+        learner: "Nurse B is above target and reviews closely. Treating them as still learning would tell your strongest reviewer they are behind.",
         resister: "Nurse B uses the agent on every letter and reports its errors. Treating them as resistant would discourage the feedback you want.",
-        self_automator: "Nurse B edits a third of the drafts and reports errors. An audit would teach the team to stop correcting drafts."
+        self_automator: "Nurse B edits a third of the drafts and reports errors. Treating them as unchecked would teach the team to stop correcting drafts."
       },
       c: {
-        learner: "Nurse C meets the target at the quality bar and reviews closely. A learner plan would use your time where it is not needed, and you would lose a champion.",
+        learner: "Nurse C meets the target at the quality bar and reviews closely. Treating them as still learning would pass over a champion.",
         resister: "Nurse C uses the agent on every letter and checks each draft. Treating them as resistant would overlook one of your most careful reviewers.",
-        self_automator: "Nurse C checks every draft they use and reports errors. An audit would tell the team that careful review gets people in trouble."
+        self_automator: "Nurse C checks every draft they use and reports errors. Treating them as unchecked would tell the team that careful review gets people in trouble."
       },
       d: {
         champion: "The team would copy Nurse D's habit of rewriting drafts from the beginning. Output would drop, and the agent would look unhelpful.",
-        resister: "Nurse D uses the agent on every letter and then rewrites most of it. They are willing to use the agent and need to learn where it is reliable.",
-        self_automator: "Nurse D checks each draft closely. An audit would signal that careful review is a problem. Nurse D needs help working faster with the agent."
+        resister: "Nurse D uses the agent on every letter and then rewrites most of it. A Resister avoids the agent, and Nurse D is willing to use it.",
+        self_automator: "Nurse D checks each draft closely. A Self-Automator rarely checks, so this call would treat careful review as the problem."
       },
       e: {
         champion: "Nurse E rarely uses the agent. Other nurses would take the role as permission to skip it.",
-        learner: "A learner plan assumes a nurse is working with the agent. Nurse E has mostly stopped using it. Find out why first.",
-        self_automator: "Nurse E rarely uses the agent, so there is little agent work to audit. Start by finding out why they avoid it."
+        learner: "A Learner works with the agent and checks it closely. Nurse E has mostly stopped using it.",
+        self_automator: "A Self-Automator relies on the agent, and Nurse E rarely uses it."
       },
       f: {
         champion: "Nurse F checks closely and sends useful feedback. They are still below target, so as a champion they would model a slower way of working than the team needs.",
-        resister: "Nurse F uses the agent on every letter and sends useful feedback. They trust it enough to use it and need to learn to check it faster.",
-        self_automator: "Nurse F checks every case closely and reports errors. An audit would treat careful review as the problem. Nurse F needs help checking the agent's drafts more efficiently."
+        resister: "Nurse F uses the agent on every letter and sends useful feedback. A Resister avoids the agent.",
+        self_automator: "Nurse F checks every case closely and reports errors. A Self-Automator rarely checks, so this call would treat careful review as the problem."
       }
     },
     your_call: "Your call: {call}",
     mark_right: "Matches",
     mark_wrong: "Different call",
+    next: "NEXT: YOUR CHAMPIONS",
     score: "Your group matched {right} of {total} calls.",
     next: "NEXT: YOUR CHAMPIONS",
     reset: "Start over",
@@ -164,25 +165,23 @@ window.RCM_SCRIPT = {
       zones: {
         learner: {
           label: "Learner",
-          def: "Reviews carefully, but not yet fully utilizing agent potential",
-          response: "Show them what the agent gets right, and teach them where to look hard"
+          def: "Reviews carefully, but not yet fully utilizing agent potential"
         },
         champion: {
           label: "Champion",
-          def: "Utilizes agent's potential and actively reviews agent output and improves it with feedback",
-          response: "Give them a formal role improving the agent or coaching peers"
+          def: "Utilizes agent's potential and actively reviews agent output and improves it with feedback"
         },
         resister: {
           label: "Resister",
-          def: "Not utilizing agent at all",
-          response: "Ask what the agent gets wrong, put its draft next to their own letter, and pair them with a champion"
+          def: "Not utilizing agent at all"
         },
         self_automator: {
           label: "Self-Automator",
-          def: "Utilizes agent's potential, but not checking the agent's work",
-          response: "Audit a sample of their letters, show them what they missed, make checking part of the job, and pair them with a champion"
+          def: "Utilizes agent's potential, but not checking the agent's work"
         }
       },
+      intervention_label: "Your intervention for {type}s",
+      intervention_placeholder: "Your intervention...",
       dot_label: "{name}: {zone}",
       box_title: "What is different with agents?",
       box: [
