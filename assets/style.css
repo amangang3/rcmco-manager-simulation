@@ -209,6 +209,7 @@ button { font: inherit; color: inherit; }
 .counter .unmet { color: var(--muted); font-weight: 500; }
 .rule { font-size: 0.85rem; color: var(--dim); }
 .score { font-size: 1.15rem; font-weight: 700; color: var(--navy); }
+.fw-head h2:focus { outline: 0; }
 
 /* Framework 1 grid */
 .fw-head h2 { font-size: 1.1rem; line-height: 1.25; color: var(--navy); margin-top: 0.2rem; }
@@ -244,6 +245,7 @@ button { font: inherit; color: inherit; }
 .zone-resister .zone-input, .zone-self_automator .zone-input { background: rgba(255, 255, 255, 0.7); }
 .zone-input::placeholder { color: var(--dim); }
 .zone-input:focus-visible { outline-offset: 0.05rem; }
+.discuss { font-size: 0.9rem; line-height: 1.35; font-weight: 600; color: var(--navy); }
 .fw-xticks {
   grid-row: 2; grid-column: 3; display: flex; justify-content: space-between;
   font-size: 0.68rem; color: var(--dim); padding: 0.2rem 0.2rem 0;

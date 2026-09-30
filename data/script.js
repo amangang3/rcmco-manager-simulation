@@ -148,8 +148,6 @@ window.RCM_SCRIPT = {
     mark_right: "Matches",
     mark_wrong: "Different call",
     next: "NEXT: YOUR CHAMPIONS",
-    score: "Your group matched {right} of {total} calls.",
-    next: "NEXT: YOUR CHAMPIONS",
     reset: "Start over",
 
     // Framework 1, as on the slide
@@ -182,6 +180,7 @@ window.RCM_SCRIPT = {
       },
       intervention_label: "Your intervention for {type}s",
       intervention_placeholder: "Your intervention...",
+      discuss: "Discuss one potential intervention for each of the four types of nurses.",
       dot_label: "{name}: {zone}",
       box_title: "What is different with agents?",
       box: [

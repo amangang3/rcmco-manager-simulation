@@ -221,30 +221,28 @@
   function reveal() {
     if (!L.quotaMet(picks) || locked) return;
     locked = true;
-    var results = L.score1(picks);
-    var right = results.filter(function (r) { return r.correct; }).length;
-    revealRows(results);
+    revealRows(L.score1(picks));
 
     side.textContent = "";
     side.setAttribute("aria-label", S.fw.eyebrow);
-    var score = el("p", { class: "score", tabindex: "-1", "aria-live": "polite",
-      text: text(S.score, { right: right, total: results.length }) });
+    // The title takes focus so screen readers hear that the reveal happened.
+    var title = el("h2", { tabindex: "-1", text: S.fw.title });
     [
-      el("div", { class: "fw-head enter", style: { "--i": 0 } }, [
+      el("div", { class: "fw-head enter", style: { "--i": 0 }, "aria-live": "polite" }, [
         el("p", { class: "eyebrow", text: S.fw.eyebrow }),
-        el("h2", { text: S.fw.title })
+        title
       ]),
       grid(),
       diffBox(),
+      el("p", { class: "discuss enter", style: { "--i": 3 }, text: S.fw.discuss }),
       el("div", { class: "panel-foot enter", style: { "--i": 3 } }, [
-        score,
         el("div", { class: "actions" }, [
           el("a", { class: "btn", href: "champions.html", text: S.next }),
           el("button", { type: "button", class: "link", text: S.reset, on: { click: startOver } })
         ])
       ])
     ].forEach(function (n) { side.appendChild(n); });
-    score.focus({ preventScroll: true });
+    title.focus({ preventScroll: true });
   }
 
   function startOver() {
