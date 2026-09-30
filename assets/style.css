@@ -318,7 +318,6 @@ button { font: inherit; color: inherit; }
 .fw2 thead td { width: 21%; }
 .fw2 td { font-size: 0.92rem; line-height: 1.35; }
 .fw2 tr:last-child th, .fw2 tr:last-child td { border-bottom: 0; }
-.closing { font-size: 0.95rem; line-height: 1.4; }
 .end { font-weight: 600; color: var(--navy); font-size: 0.95rem; line-height: 1.4; }
 
 .who { font-weight: 700; }

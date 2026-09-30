@@ -45,7 +45,7 @@ window.RCM_SCRIPT = {
       },
       {
         eyebrow: "What you will do",
-        heading: "You will make two decisions. Each should take about 10 minutes.",
+        heading: "You will make two decisions.",
         steps: [
           { text: "Review your team dashboard.",
             sub: "For each of your six nurses, decide how you will manage them over the coming month." },
@@ -262,7 +262,6 @@ window.RCM_SCRIPT = {
         { k: "After rollout", v: "The agent learns from every nurse's edits and feedback, so the champion's job shifts from giving feedback to helping other nurses give good feedback." }
       ]
     },
-    closing: "Name the part of the change each champion owns. Nurse B works directly with the agent's development team. Nurse C teaches the team and can help bring back Nurse E, the resister, who writes most letters without the agent. Nurses D and F, your two learners, can learn from both.",
     end: "This is the end of the exercise. Your faculty will bring the room back together.",
     back: "Back to Your team",
     reset: "Start over"
